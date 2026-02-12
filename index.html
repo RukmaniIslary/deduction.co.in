@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24/7 iOS Help – Independent Support</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #1d1d1f;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* NAV – CLEAN, NEUTRAL */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 8%;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #eee;
+      z-index: 1000;
+    }
+
+    .logo span {
+      background: #f2f2f2;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .nav-call {
+      background: #0071e3;
+      color: #fff;
+      padding: 8px 22px;
+      border-radius: 980px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: .3s;
+    }
+
+    .nav-call:hover {
+      background: #005bb5;
+    }
+
+    /* LEGAL DISCLAIMER */
+    .disclaimer {
+      background: #fafafc;
+      padding: 14px 8%;
+      text-align: center;
+      font-size: 15px;
+      color: #6e6e73;
+      border-bottom: 1px solid #eee;
+      margin-top: 70px;
+    }
+
+    .disclaimer strong {
+      color: #1d1d1f;
+    }
+
+    /* HERO – REAL CALL CENTER */
+    .hero {
+      position: relative;
+      height: 85vh;
+      background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #f2f2f2;
+    }
+
+    .hero-call {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 18px 50px;
+      border-radius: 980px;
+      background: #0071e3;
+      color: #fff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 600;
+      transition: .3s;
+    }
+
+    .hero-call:hover {
+      background: #005bb5;
+    }
+
+    /* OFFICE SECTION – REAL CALL CENTER PHOTO */
+    .office-section {
+      padding: 100px 8%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .office-section h2 {
+      font-size: 42px;
+      font-weight: 700;
+    }
+
+    .office-section p {
+      margin-top: 20px;
+      font-size: 19px;
+      color: #6e6e73;
+    }
+
+    .office-img {
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 100px 8%;
+      text-align: center;
+      background: #ffffff;
+    }
+
+    .cta-section h2 {
+      font-size: 48px;
+      font-weight: 700;
+    }
+
+    .cta-section a {
+      margin-top: 35px;
+      display: inline-block;
+      padding: 18px 50px;
+      border-radius: 980px;
+      background: #0071e3;
+      color: #fff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 600;
+      transition: .3s;
+    }
+
+    .cta-section a:hover {
+      background: #005bb5;
+    }
+
+    footer {
+      padding: 50px 8% 60px;
+      font-size: 14px;
+      color: #86868b;
+      text-align: center;
+      border-top: 1px solid #eee;
+      background: white;
+    }
+
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 40px; }
+      .office-section { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV – NEUTRAL BRANDING -->
+  <nav>
+    <div class="logo">
+      <span>📱 24/7 iOS Help</span>
+    </div>
+    <a href="tel:+18889945442" class="nav-call">Call +1 (888) 994-5442</a>
+  </nav>
+
+  <!-- LEGAL DISCLAIMER -->
+  <div class="disclaimer">
+    <strong>Independent support.</strong> Not affiliated with Apple Inc. We are a third-party service provider.
+  </div>
+
+  <!-- HERO – REAL CALL CENTER -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>24/7 iOS Support – Real Call Center</h1>
+      <p>Apple ID, iCloud, Apple Pay, gift cards, billing — fixed remotely, over the phone.</p>
+      <a href="tel:+18889945442" class="hero-call">📞 +1 (888) 994-5442</a>
+      <p style="margin-top: 25px; font-size: 18px; color: #f2f2f2;">Available 24/7 • US-based support center • No appointment</p>
+    </div>
+  </section>
+
+  <!-- OFFICE SECTION – ACTUAL CALL CENTER PHOTO -->
+  <section class="office-section">
+    <div>
+      <h2>Based in a professional support center.</h2>
+      <p>Our technicians work from a dedicated US-based call center — not a home office, not a coffee shop. Every call is answered by a trained specialist in a professional environment, with direct access to troubleshooting tools.</p>
+      <p style="margin-top: 25px; font-size: 18px; font-weight: 500;">Average pick-up: under 60 seconds. No automated system.</p>
+    </div>
+    <div class="office-img">
+      <img src="https://images.pexels.com/photos/1266287/pexels-photo-1266287.jpeg?q=80&w=2070&auto=format&fit=crop" alt="Professional call center with representatives on headsets">
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-section">
+    <h2>Need help right now?</h2>
+    <p style="font-size: 22px; color: #6e6e73; margin-top: 16px;">Our call center is open 24/7. A real person is waiting.</p>
+    <a href="tel:+18889945442">📞 Call +1 (888) 994-5442</a>
+    <p style="margin-top: 25px; font-size: 16px; color: #8e8e93;">No bots. No holds. Just a real technician in our support center.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Independent support provider.</strong> Not affiliated with, endorsed by, or connected to Apple Inc. Apple, iPhone, iPad, iCloud, Apple Pay, Apple Cash, Apple Gift Card, Apple One, and AppleCare are trademarks of Apple Inc.</p>
+    <p style="margin-top: 25px;">© 2026 24/7 iOS Help. All rights reserved.</p>
+    <p style="margin-top: 20px; font-size: 13px;">Calls may be recorded for quality assurance. Remote fix guaranteed or no fee.</p>
+  </footer>
+
+</body>
+</html>
