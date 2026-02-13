@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurex Solutions | Digital Device Experts</title>
+
+<title>Aurex Solutions | Digital Device Optimization & Security</title>
+<meta name="description" content="Aurex Solutions provides digital device optimization, security configuration, cloud setup, and professional system support for phones and computers. Remote and on-site services available.">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -28,8 +31,9 @@ header {
     padding: 24px 8%;
     position: sticky;
     top: 0;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid #eee;
 }
 
 .logo {
@@ -38,16 +42,26 @@ header {
     letter-spacing: 2px;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav a {
     text-decoration: none;
     color: #555;
-    margin-left: 30px;
+    margin-left: 25px;
     font-size: 14px;
     transition: 0.3s;
 }
 
 nav a:hover {
     color: #000;
+}
+
+.phone-link {
+    font-weight: 500;
+    color: #111;
 }
 
 .hero {
@@ -66,7 +80,7 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: 60px;
+    font-size: 56px;
     font-weight: 500;
     margin-bottom: 20px;
 }
@@ -87,6 +101,7 @@ nav a:hover {
     color: #111;
     font-size: 14px;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -95,25 +110,25 @@ nav a:hover {
 }
 
 .section {
-    padding: 140px 8%;
+    padding: 120px 8%;
     text-align: center;
 }
 
 .section h2 {
-    font-size: 42px;
-    margin-bottom: 70px;
+    font-size: 40px;
+    margin-bottom: 60px;
     font-weight: 500;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 60px;
+    gap: 50px;
 }
 
 .card h3 {
     font-size: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 15px;
 }
 
 .card p {
@@ -126,6 +141,28 @@ nav a:hover {
     margin: 0 8%;
 }
 
+/* CONTACT FORM */
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
 footer {
     padding: 80px 8%;
     text-align: center;
@@ -133,9 +170,14 @@ footer {
     color: #777;
 }
 
+footer a {
+    color: #111;
+    text-decoration: none;
+}
+
 @media(max-width: 768px) {
     .hero h1 {
-        font-size: 40px;
+        font-size: 36px;
     }
 }
 </style>
@@ -146,8 +188,8 @@ footer {
 <header>
     <div class="logo">AUREX SOLUTIONS</div>
     <nav>
+        <a href="tel:+18332249350" class="phone-link">+1 (833) 224-9350</a>
         <a href="#services">Services</a>
-        <a href="#why">Why Aurex</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
@@ -155,7 +197,7 @@ footer {
 <section class="hero">
     <div class="badge">REMOTE & ON-SITE SUPPORT</div>
     <h1>Digital Performance.<br>Engineered.</h1>
-    <p>We optimize, secure, and configure phones and computers for individuals and organizations that demand reliability, security, and precision.</p>
+    <p>We optimize, secure, and configure phones and computers for individuals and businesses seeking reliability, privacy, and long-term stability.</p>
     <a href="#contact" class="btn">Request Consultation</a>
 </section>
 
@@ -166,60 +208,7 @@ footer {
     <div class="grid">
         <div class="card">
             <h3>System Optimization</h3>
-            <p>Performance enhancement, operating system configuration, software setup, and device tuning for consistent reliability.</p>
+            <p>Resolve freezing issues, lag, and performance instability across modern smartphones and computers.</p>
         </div>
         <div class="card">
-            <h3>Security & Protection</h3>
-            <p>Privacy configuration, malware removal, firewall setup, and digital environment hardening.</p>
-        </div>
-        <div class="card">
-            <h3>Cloud & Data Management</h3>
-            <p>Secure backups, structured data organization, migration, and cloud integration services.</p>
-        </div>
-        <div class="card">
-            <h3>Business Device Configuration</h3>
-            <p>Professional setup for teams, remote environments, collaboration systems, and operational continuity.</p>
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="why" class="section">
-    <h2>Why Aurex</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Precision Execution</h3>
-            <p>Every system is configured with structured methodology and technical accuracy.</p>
-        </div>
-        <div class="card">
-            <h3>Security-First Approach</h3>
-            <p>Protection and privacy are integrated into every engagement.</p>
-        </div>
-        <div class="card">
-            <h3>Long-Term Stability</h3>
-            <p>We build digital environments designed for sustained performance.</p>
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="contact" class="section">
-    <h2>Start a Consultation</h2>
-    <p style="max-width:600px;margin:0 auto 40px;color:#666;">
-        Speak with our team to assess your digital systems and explore a tailored solution.
-    </p>
-    <a href="mailto:info@aurexsolutions.com" class="btn">Contact Us</a>
-</section>
-
-<div class="divider"></div>
-
-<footer>
-    © 2026 Aurex Solutions. All rights reserved.<br><br>
-    Email: info@aurexsolutions.com<br>
-    Privacy Policy | Terms of Service
-</footer>
-
-</body>
-</html>
+            <h3>Security Configuration</
