@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Aurex Solutions | Digital Device Optimization & Security</title>
-<meta name="description" content="Aurex Solutions provides digital device optimization, security configuration, cloud setup, and professional system support for phones and computers. Remote and on-site services available.">
+<meta name="description" content="Aurex Solutions provides digital device optimization, security configuration, cloud setup, and professional system support.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -18,22 +18,28 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #ffffff;
+    background: radial-gradient(circle at 20% 20%, #dfe9ff, transparent 40%),
+                radial-gradient(circle at 80% 70%, #c9f7ff, transparent 40%),
+                linear-gradient(180deg, #f8fbff, #eef3ff);
     color: #111;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
+
+/* NAV */
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 24px 8%;
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #eee;
+    backdrop-filter: blur(14px);
+    background: rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    z-index: 100;
 }
 
 .logo {
@@ -42,14 +48,9 @@ header {
     letter-spacing: 2px;
 }
 
-nav {
-    display: flex;
-    align-items: center;
-}
-
 nav a {
     text-decoration: none;
-    color: #555;
+    color: #333;
     margin-left: 25px;
     font-size: 14px;
     transition: 0.3s;
@@ -59,71 +60,93 @@ nav a:hover {
     color: #000;
 }
 
-.phone-link {
-    font-weight: 500;
-    color: #111;
-}
+/* HERO */
 
 .hero {
-    padding: 170px 8% 150px;
+    padding: 220px 8% 180px;
     text-align: center;
+    position: relative;
 }
 
 .badge {
     display: inline-block;
     font-size: 12px;
     letter-spacing: 1px;
-    padding: 6px 14px;
-    border: 1px solid #111;
+    padding: 6px 16px;
     border-radius: 30px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
     margin-bottom: 30px;
 }
 
 .hero h1 {
-    font-size: 56px;
+    font-size: 64px;
     font-weight: 500;
     margin-bottom: 20px;
+    background: linear-gradient(90deg, #4c7cff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero p {
     font-size: 20px;
-    color: #666;
+    color: #555;
     max-width: 750px;
     margin: 0 auto 40px;
 }
 
+/* BUTTON */
+
 .btn {
     display: inline-block;
-    padding: 14px 36px;
-    border: 1px solid #111;
-    border-radius: 40px;
+    padding: 14px 40px;
+    border-radius: 50px;
     text-decoration: none;
-    color: #111;
     font-size: 14px;
-    transition: 0.3s;
-    cursor: pointer;
+    background: linear-gradient(135deg, #4c7cff, #00d4ff);
+    color: #fff;
+    transition: 0.4s ease;
+    box-shadow: 0 10px 30px rgba(76,124,255,0.3);
 }
 
 .btn:hover {
-    background: #111;
-    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(76,124,255,0.5);
 }
 
+/* SECTION */
+
 .section {
-    padding: 120px 8%;
+    padding: 140px 8%;
     text-align: center;
 }
 
 .section h2 {
-    font-size: 40px;
+    font-size: 44px;
     margin-bottom: 60px;
     font-weight: 500;
 }
 
+/* GLASS CARDS */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 50px;
+    gap: 40px;
+}
+
+.card {
+    padding: 40px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
 }
 
 .card h3 {
@@ -132,52 +155,49 @@ nav a:hover {
 }
 
 .card p {
-    color: #666;
+    color: #555;
 }
 
-.divider {
-    height: 1px;
-    background: #eee;
-    margin: 0 8%;
+/* LIQUID BLOBS */
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(76,124,255,0.4), transparent 70%);
+    filter: blur(80px);
+    z-index: -1;
+    animation: float 10s ease-in-out infinite alternate;
 }
 
-/* CONTACT FORM */
-
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
+.hero::before {
+    top: -150px;
+    left: -200px;
 }
 
-form input, form textarea {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: 'Inter', sans-serif;
+.hero::after {
+    bottom: -200px;
+    right: -200px;
+    animation-delay: 3s;
 }
 
-form textarea {
-    resize: vertical;
-    min-height: 120px;
+@keyframes float {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(40px); }
 }
 
 footer {
     padding: 80px 8%;
     text-align: center;
     font-size: 14px;
-    color: #777;
-}
-
-footer a {
-    color: #111;
-    text-decoration: none;
+    color: #555;
 }
 
 @media(max-width: 768px) {
     .hero h1 {
-        font-size: 36px;
+        font-size: 40px;
     }
 }
 </style>
@@ -188,7 +208,7 @@ footer a {
 <header>
     <div class="logo">AUREX SOLUTIONS</div>
     <nav>
-        <a href="tel:+18332249350" class="phone-link">+1 (833) 224-9350</a>
+        <a href="tel:+18332249350">+1 (833) 224-9350</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -197,18 +217,31 @@ footer a {
 <section class="hero">
     <div class="badge">REMOTE & ON-SITE SUPPORT</div>
     <h1>Digital Performance.<br>Engineered.</h1>
-    <p>We optimize, secure, and configure phones and computers for individuals and businesses seeking reliability, privacy, and long-term stability.</p>
+    <p>We optimize, secure, and configure phones and computers for individuals and businesses seeking reliability and stability.</p>
     <a href="#contact" class="btn">Request Consultation</a>
 </section>
-
-<div class="divider"></div>
 
 <section id="services" class="section">
     <h2>Digital Device Solutions</h2>
     <div class="grid">
         <div class="card">
             <h3>System Optimization</h3>
-            <p>Resolve freezing issues, lag, and performance instability across modern smartphones and computers.</p>
+            <p>Resolve freezing issues, lag, and performance instability across smartphones and computers.</p>
         </div>
         <div class="card">
-            <h3>Security Configuration</
+            <h3>Security Configuration</h3>
+            <p>Advanced privacy protection, malware prevention, and system hardening.</p>
+        </div>
+        <div class="card">
+            <h3>Cloud Setup</h3>
+            <p>Secure backups, sync configuration, and professional cloud integration.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Aurex Solutions. All rights reserved.
+</footer>
+
+</body>
+</html>
