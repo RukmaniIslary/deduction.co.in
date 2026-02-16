@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aurex Solutions | Digital Device Optimization & Security</title>
-<meta name="description" content="Aurex Solutions provides digital device optimization, security configuration, cloud setup, and professional system support.">
+<title>Aurex Solutions | Digital Infrastructure & Security</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -16,14 +15,28 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', sans-serif;
-    background: radial-gradient(circle at 20% 20%, #dfe9ff, transparent 40%),
-                radial-gradient(circle at 80% 70%, #c9f7ff, transparent 40%),
-                linear-gradient(180deg, #f8fbff, #eef3ff);
-    color: #111;
-    line-height: 1.6;
+    background: #0a0d12;
+    color: #e6edf3;
     overflow-x: hidden;
+}
+
+/* Subtle grid background */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
 }
 
 /* NAV */
@@ -32,67 +45,64 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 8%;
+    padding: 28px 8%;
     position: fixed;
     width: 100%;
     top: 0;
-    backdrop-filter: blur(14px);
-    background: rgba(255,255,255,0.4);
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    z-index: 100;
+    background: rgba(10,13,18,0.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    z-index: 1000;
 }
 
 .logo {
     font-weight: 600;
-    font-size: 16px;
     letter-spacing: 2px;
+    font-size: 13px;
 }
 
 nav a {
     text-decoration: none;
-    color: #333;
-    margin-left: 25px;
+    color: #8b949e;
+    margin-left: 30px;
     font-size: 14px;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 nav a:hover {
-    color: #000;
+    color: #fff;
 }
 
 /* HERO */
 
 .hero {
-    padding: 220px 8% 180px;
-    text-align: center;
-    position: relative;
-}
-
-.badge {
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 1px;
-    padding: 6px 16px;
-    border-radius: 30px;
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(10px);
-    margin-bottom: 30px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8%;
+    max-width: 1100px;
 }
 
 .hero h1 {
-    font-size: 64px;
+    font-size: 68px;
     font-weight: 500;
-    margin-bottom: 20px;
-    background: linear-gradient(90deg, #4c7cff, #00d4ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    line-height: 1.05;
+    margin-bottom: 25px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: reveal 1s ease forwards;
 }
 
 .hero p {
     font-size: 20px;
-    color: #555;
-    max-width: 750px;
-    margin: 0 auto 40px;
+    color: #8b949e;
+    max-width: 650px;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: reveal 1s ease forwards;
+    animation-delay: 0.2s;
 }
 
 /* BUTTON */
@@ -100,104 +110,90 @@ nav a:hover {
 .btn {
     display: inline-block;
     padding: 14px 40px;
-    border-radius: 50px;
+    border-radius: 4px;
+    font-size: 13px;
+    letter-spacing: 1px;
     text-decoration: none;
-    font-size: 14px;
-    background: linear-gradient(135deg, #4c7cff, #00d4ff);
-    color: #fff;
-    transition: 0.4s ease;
-    box-shadow: 0 10px 30px rgba(76,124,255,0.3);
+    border: 1px solid #2f81f7;
+    color: #2f81f7;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: reveal 1s ease forwards;
+    animation-delay: 0.4s;
 }
 
 .btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(76,124,255,0.5);
+    background: #2f81f7;
+    color: #0a0d12;
 }
 
-/* SECTION */
+/* SECTIONS */
 
 .section {
     padding: 140px 8%;
-    text-align: center;
+    max-width: 1200px;
 }
 
 .section h2 {
-    font-size: 44px;
+    font-size: 32px;
     margin-bottom: 60px;
-    font-weight: 500;
+    border-left: 2px solid #2f81f7;
+    padding-left: 15px;
 }
 
-/* GLASS CARDS */
+/* GRID */
 
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
+    gap: 60px;
 }
 
 .card {
-    padding: 40px;
-    border-radius: 24px;
-    background: rgba(255,255,255,0.5);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.4);
-    transition: 0.4s ease;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 25px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s ease;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card h3 {
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 15px;
 }
 
 .card p {
-    color: #555;
+    color: #8b949e;
+    font-size: 14px;
 }
 
-/* LIQUID BLOBS */
+/* Animation */
 
-.hero::before,
-.hero::after {
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(76,124,255,0.4), transparent 70%);
-    filter: blur(80px);
-    z-index: -1;
-    animation: float 10s ease-in-out infinite alternate;
-}
-
-.hero::before {
-    top: -150px;
-    left: -200px;
-}
-
-.hero::after {
-    bottom: -200px;
-    right: -200px;
-    animation-delay: 3s;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(40px); }
+@keyframes reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 footer {
     padding: 80px 8%;
-    text-align: center;
-    font-size: 14px;
-    color: #555;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 13px;
+    color: #6e7681;
 }
 
-@media(max-width: 768px) {
+@media(max-width:768px) {
     .hero h1 {
-        font-size: 40px;
+        font-size: 42px;
     }
 }
 </style>
@@ -208,40 +204,52 @@ footer {
 <header>
     <div class="logo">AUREX SOLUTIONS</div>
     <nav>
-        <a href="tel:+18332249350">+1 (833) 224-9350</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
 
 <section class="hero">
-    <div class="badge">REMOTE & ON-SITE SUPPORT</div>
-    <h1>Digital Performance.<br>Engineered.</h1>
-    <p>We optimize, secure, and configure phones and computers for individuals and businesses seeking reliability and stability.</p>
-    <a href="#contact" class="btn">Request Consultation</a>
+    <h1>Secure. Optimize.<br>Fortify.</h1>
+    <p>Advanced device performance engineering and security hardening for individuals and businesses demanding operational resilience.</p>
+    <a href="#contact" class="btn">REQUEST CONSULTATION</a>
 </section>
 
 <section id="services" class="section">
-    <h2>Digital Device Solutions</h2>
+    <h2>Capabilities</h2>
     <div class="grid">
         <div class="card">
             <h3>System Optimization</h3>
-            <p>Resolve freezing issues, lag, and performance instability across smartphones and computers.</p>
+            <p>Performance stabilization and efficiency tuning across modern infrastructure.</p>
         </div>
         <div class="card">
-            <h3>Security Configuration</h3>
-            <p>Advanced privacy protection, malware prevention, and system hardening.</p>
+            <h3>Security Hardening</h3>
+            <p>Advanced privacy configuration and threat surface reduction.</p>
         </div>
         <div class="card">
-            <h3>Cloud Setup</h3>
-            <p>Secure backups, sync configuration, and professional cloud integration.</p>
+            <h3>Cloud Infrastructure</h3>
+            <p>Secure deployment, synchronization, and backup architecture.</p>
         </div>
     </div>
 </section>
 
 <footer>
-    © 2026 Aurex Solutions. All rights reserved.
+© 2026 Aurex Solutions. All rights reserved.
 </footer>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.2 });
+
+cards.forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
