@@ -1,143 +1,389 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Payment Assistance – Independent Support</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box;}
+
 body{
+
   font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+
   background:#f5f7fa;
+
   color:#1d1d1f;
+
 }
+
 /* HEADER */
+
 header{
+
   background:#003087;
+
   padding:18px 0;
+
   color:#fff;
+
 }
+
 .container{
+
   width:90%;
+
   max-width:1100px;
+
   margin:auto;
+
 }
+
 .header-inner{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
 }
+
 .logo{
+
   display:flex;
+
   align-items:center;
+
 }
+
 .logo img{
+
   height:48px;
+
   width:auto;
+
   display:block;
+
 }
+
 .call-btn{
+
   background:#fff;
+
   color:#003087;
+
   padding:10px 22px;
+
   border-radius:999px;
+
   font-weight:600;
+
   text-decoration:none;
+
   font-size:16px;
+
 }
+
 /* HERO */
+
 .hero{
+
   background:#fff;
+
   padding:100px 0;
+
   text-align:center;
+
   box-shadow:0 20px 40px rgba(0,0,0,0.05);
+
+  min-height: 350px;
+
+  display: flex;
+
+  align-items: center;
+
 }
+
+.hero .container {
+
+  width: 100%;
+
+}
+
 .hero h1{
+
   font-size:42px;
+
   font-weight:700;
+
+  margin-bottom: 30px;
+
+  min-height: 120px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
 }
+
+.rotating-text {
+
+  color: #0070ba;
+
+  display: block;
+
+  font-size: 36px;
+
+  font-weight: 600;
+
+  margin-top: 15px;
+
+  min-height: 60px;
+
+  transition: opacity 0.5s ease;
+
+}
+
 .hero p{
+
   margin-top:20px;
+
   font-size:18px;
+
   color:#555;
+
 }
+
 .hero-cta{
+
   margin-top:30px;
+
   display:inline-block;
+
   background:#0070ba;
+
   color:#fff;
+
   padding:14px 30px;
+
   border-radius:999px;
+
   font-weight:600;
+
   text-decoration:none;
+
   font-size:18px;
+
 }
+
 /* CARD SECTION */
+
 .card-section{
+
   padding:80px 0;
+
 }
+
 .card{
+
   background:#fff;
+
   padding:40px;
+
   border-radius:20px;
+
   box-shadow:0 20px 50px rgba(0,0,0,0.08);
+
 }
+
 .card h2{
+
   font-size:24px;
+
   margin-bottom:20px;
+
 }
+
 .card ul{
+
   line-height:2;
+
   color:#444;
+
   font-size:16px;
+
 }
+
 /* FOOTER */
+
 footer{
+
   padding:40px 0;
+
   text-align:center;
+
   font-size:14px;
+
   color:#777;
+
 }
+
 </style>
+
 </head>
+
 <body>
+
 <header>
+
   <div class="container header-inner">
+
     <div class="logo">
-      <!-- Larger PayPal logo -->
+
       <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" 
+
            alt="PayPal"
+
            style="height:48px; width:auto;">
+
     </div>
-    <a href="tel:+18889945442" class="call-btn">📞 Call +1 (888) 994-5442</a>
+
+    <a href="tel:+18332249350" class="call-btn">📞 Call +1-(833)-224-9350</a>
+
   </div>
+
 </header>
+
 <section class="hero">
+
   <div class="container">
-    <h1>Need Help With a PayPal Unauthorized Transaction?</h1>
-    <p>Speak directly with a live Support for guidance and dispute assistance.</p>
-    <a href="tel:+18889945442" class="hero-cta">📞 Call Now For Help</a>
+
+    <h1>
+
+      Need Help With a PayPal<br>
+
+      <span id="rotating-text" class="rotating-text">Unauthorized Transaction?</span>
+
+    </h1>
+
+    <p>Speak directly to PayPal Customer Support for guidance and dispute assistance.</p>
+
+    <a href="tel:+18332249350" class="hero-cta">📞 Call Now </a>
+
   </div>
+
 </section>
+
 <section class="card-section">
+
   <div class="container">
+
     <div class="card">
+
       <h2>We Can Assist With:</h2>
+
       <ul>
+
         <li>Refund status questions</li>
+
         <li>Dispute filing guidance</li>
+
         <li>Unauthorized transaction help</li>
+
         <li>Chargeback clarification</li>
+
         <li>Account payment issues</li>
+
       </ul>
+
     </div>
+
   </div>
+
 </section>
+
 <footer>
+
   PayPal Holdings, Inc.  
+
   For official PayPal assistance, Call Us.  
+
   © 2026 All Rights Reserved.
+
 </footer>
+
+<script>
+
+// Rotating text functionality
+
+const phrases = [
+
+  "Unauthorized Transaction?",
+
+  "Refund Status Questions?",
+
+  "Dispute Filing Guidance?",
+
+  "Unauthorized Transaction Help?",
+
+  "Chargeback Clarification?",
+
+  "Account Payment Issues?"
+
+];
+
+let currentIndex = 0;
+
+const rotatingElement = document.getElementById('rotating-text');
+
+function rotateText() {
+
+  // Fade out
+
+  rotatingElement.style.opacity = '0';
+
+  
+
+  setTimeout(() => {
+
+    // Change text
+
+    currentIndex = (currentIndex + 1) % phrases.length;
+
+    rotatingElement.textContent = phrases[currentIndex];
+
+    // Fade in
+
+    rotatingElement.style.opacity = '1';
+
+  }, 250); // Wait for fade out to complete
+
+}
+
+// Initial opacity
+
+rotatingElement.style.opacity = '1';
+
+rotatingElement.style.transition = 'opacity 0.5s ease';
+
+// Rotate every 3.5 seconds (3500 milliseconds)
+
+setInterval(rotateText, 3500);
+
+</script>
+
 </body>
+
 </html>
