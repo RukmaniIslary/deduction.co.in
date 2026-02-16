@@ -1,54 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanks for your payment</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Assistance – Independent Support</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#f5f7fa;
+  color:#1d1d1f;
+}
+/* HEADER */
+header{
+  background:#003087;
+  padding:18px 0;
+  color:#fff;
+}
+.container{
+  width:90%;
+  max-width:1100px;
+  margin:auto;
+}
+.header-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  display:flex;
+  align-items:center;
+}
+.logo img{
+  height:48px;
+  width:auto;
+  display:block;
+}
+.call-btn{
+  background:#fff;
+  color:#003087;
+  padding:10px 22px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  font-size:16px;
+}
+/* HERO */
+.hero{
+  background:#fff;
+  padding:100px 0;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.05);
+}
+.hero h1{
+  font-size:42px;
+  font-weight:700;
+}
+.hero p{
+  margin-top:20px;
+  font-size:18px;
+  color:#555;
+}
+.hero-cta{
+  margin-top:30px;
+  display:inline-block;
+  background:#0070ba;
+  color:#fff;
+  padding:14px 30px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  font-size:18px;
+}
+/* CARD SECTION */
+.card-section{
+  padding:80px 0;
+}
+.card{
+  background:#fff;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+.card h2{
+  font-size:24px;
+  margin-bottom:20px;
+}
+.card ul{
+  line-height:2;
+  color:#444;
+  font-size:16px;
+}
+/* FOOTER */
+footer{
+  padding:40px 0;
+  text-align:center;
+  font-size:14px;
+  color:#777;
+}
+</style>
 </head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px;">
-    <div style="max-width: 600px; margin: 0 auto;">
-        
-        <!-- Simple header -->
-        <div style="padding: 20px 0;">
-            <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" 
-                 alt="PayPal" 
-                 style="width: 120px; height: auto;">
-        </div>
-        
-        <!-- Main content - super simple -->
-        <div style="padding: 20px 0;">
-            <p style="font-size: 16px;">Hi [First Name],</p>
-            
-            <p style="font-size: 16px;">Your recent transaction has been processed successfully.</p>
-            
-            <p style="font-size: 16px;">Amount: $49.99<br>
-            Date: February 16, 2026<br>
-            To: Deduction.co.in</p>
-            
-            <!-- CTA Button -->
-            <div style="margin: 30px 0;">
-                <a href="https://deduction.co.in" 
-                   style="background-color: #0070ba; 
-                          color: white; 
-                          padding: 12px 25px; 
-                          text-decoration: none; 
-                          border-radius: 25px;
-                          display: inline-block;">
-                    View transaction details
-                </a>
-            </div>
-            
-            <p style="color: #777; font-size: 14px;">Need help? Contact us.</p>
-        </div>
-        
-        <!-- Footer -->
-        <div style="border-top: 1px solid #eee; padding: 20px 0; font-size: 12px; color: #999;">
-            <p>© 2026 PayPal. All rights reserved.</p>
-            <p>
-                <a href="[unsubscribe_link]" style="color: #999;">Unsubscribe</a>
-            </p>
-        </div>
-        
+<body>
+<header>
+  <div class="container header-inner">
+    <div class="logo">
+      <!-- Larger PayPal logo -->
+      <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" 
+           alt="PayPal"
+           style="height:48px; width:auto;">
     </div>
+    <a href="tel:+18889945442" class="call-btn">📞 Call +1 (888) 994-5442</a>
+  </div>
+</header>
+<section class="hero">
+  <div class="container">
+    <h1>Need Help With a PayPal Unauthorized Transaction?</h1>
+    <p>Speak directly with a live Support for guidance and dispute assistance.</p>
+    <a href="tel:+18889945442" class="hero-cta">📞 Call Now For Help</a>
+  </div>
+</section>
+<section class="card-section">
+  <div class="container">
+    <div class="card">
+      <h2>We Can Assist With:</h2>
+      <ul>
+        <li>Refund status questions</li>
+        <li>Dispute filing guidance</li>
+        <li>Unauthorized transaction help</li>
+        <li>Chargeback clarification</li>
+        <li>Account payment issues</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<footer>
+  PayPal Holdings, Inc.  
+  For official PayPal assistance, Call Us.  
+  © 2026 All Rights Reserved.
+</footer>
 </body>
 </html>
