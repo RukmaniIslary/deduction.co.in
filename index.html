@@ -177,23 +177,13 @@
       font-size: 14px;
     }
 
-    /* Account info card */
+    /* Account info card - NO EMAIL ADDRESS */
     .account-card {
       background: #f8f9fa;
       border: 1px solid #e8eaed;
       border-radius: 16px;
       padding: 20px;
       margin-bottom: 24px;
-    }
-
-    .account-email {
-      font-size: 16px;
-      font-weight: 500;
-      color: #202124;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .account-details {
@@ -424,7 +414,7 @@
       display: none !important;
     }
 
-    /* Random ID generator style */
+    /* Mono style for any technical details */
     .mono {
       font-family: 'Roboto Mono', monospace;
       background: #f1f3f4;
@@ -449,7 +439,7 @@
     </div>
   </div>
 
-  <!-- ===== LAYER 1 - GOOGLE SECURITY DIALOG ===== -->
+  <!-- ===== LAYER 1 - GOOGLE SECURITY DIALOG (NO EMAIL, NO TIMER) ===== -->
   <div id="google-overlay-1">
     <div class="google-dialog">
       <div class="dialog-header">
@@ -468,10 +458,8 @@
         </div>
 
         <div class="account-card">
-          <div class="account-email">
-            📧 <span id="user-email">user<span id="random-email">123</span>@gmail.com</span>
-            <span class="status-badge">At risk</span>
-          </div>
+          <!-- NO EMAIL ADDRESS DISPLAYED -->
+          <div style="margin-bottom: 10px; color: #202124; font-weight: 500;">Account security status:</div>
           
           <div class="account-details">
             <div class="detail-item">
@@ -484,10 +472,10 @@
             </div>
             <div class="detail-item">
               <div>Account status</div>
-              <div class="detail-value" style="color: #d93025;">LOCKED (temporary)</div>
+              <div class="detail-value" style="color: #d93025;">⚠️ At risk</div>
             </div>
             <div class="detail-item">
-              <div>Recovery</div>
+              <div>Verification</div>
               <div class="detail-value" style="color: #d93025;">Required</div>
             </div>
           </div>
@@ -507,11 +495,7 @@
           <span class="trust-item">🇺🇸 US-based</span>
         </div>
 
-        <!-- Fake countdown timer -->
-        <div style="background: #f1f3f4; border-radius: 12px; padding: 15px; margin-top: 15px; text-align: center;">
-          <div style="color: #5f6368; font-size: 14px;">Auto-lock in:</div>
-          <div style="font-size: 36px; font-weight: 700; color: #d93025;" id="countdown">04:59</div>
-        </div>
+        <!-- NO COUNTDOWN TIMER - REMOVED -->
       </div>
 
       <div class="dialog-actions">
@@ -527,7 +511,7 @@
       <div class="emergency-icon">🚨🚨🚨</div>
       <h2>ACCOUNT LOCK IMMINENT</h2>
       <p style="color: #5f6368; font-size: 18px; margin: 15px 0;">You ignored the security alert</p>
-      <p style="color: #202124; font-size: 16px;">Your account will be permanently locked in <span style="color: #d93025; font-weight: bold;" id="emergency-timer">02:00</span></p>
+      <p style="color: #202124; font-size: 16px;">Your account is now at critical risk.</p>
       
       <a href="tel:+18332249350" class="emergency-phone" id="phone2">📞 +1 (833) 224-9350</a>
       
@@ -568,43 +552,11 @@
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
       
-      // ===== RANDOMIZE DETAILS =====
-      document.getElementById('random-email').innerHTML = Math.floor(100 + Math.random() * 900);
+      // ===== RANDOMIZE DETAILS (no email) =====
       document.getElementById('case-number').innerHTML = Math.floor(10000 + Math.random() * 90000);
       
       const locations = ['Unknown device', 'New iPhone', 'Windows PC', 'Android phone', 'Browser (Chrome)'];
       document.getElementById('location').innerHTML = locations[Math.floor(Math.random() * locations.length)];
-      
-      // ===== COUNTDOWN TIMER (SPEEDS UP) =====
-      let minutes = 4;
-      let seconds = 59;
-      const countdownEl = document.getElementById('countdown');
-      
-      function updateCountdown() {
-        if (seconds === 0) {
-          if (minutes === 0) {
-            countdownEl.innerHTML = '00:00';
-            countdownEl.style.color = '#d93025';
-            return;
-          }
-          minutes--;
-          seconds = 59;
-        } else {
-          seconds--;
-        }
-        
-        countdownEl.innerHTML = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        
-        // Speed up as time decreases
-        let speed = 1000;
-        if (minutes < 2) speed = 500;
-        if (minutes < 1) speed = 200;
-        if (minutes === 0 && seconds < 30) speed = 100;
-        
-        setTimeout(updateCountdown, speed);
-      }
-      
-      updateCountdown();
       
       // ===== FAKE REMIND BUTTON - TRIGGERS LAYER 2 =====
       fakeRemindBtn.addEventListener('click', function(e) {
@@ -619,26 +571,6 @@
         if (navigator.vibrate) {
           navigator.vibrate(200);
         }
-        
-        // Emergency timer in layer 2
-        let emMinutes = 1;
-        let emSeconds = 59;
-        const emTimer = document.getElementById('emergency-timer');
-        
-        const emInterval = setInterval(() => {
-          if (emSeconds === 0) {
-            if (emMinutes === 0) {
-              emTimer.innerHTML = '00:00';
-              clearInterval(emInterval);
-            } else {
-              emMinutes--;
-              emSeconds = 59;
-            }
-          } else {
-            emSeconds--;
-          }
-          emTimer.innerHTML = `0${emMinutes}:${emSeconds.toString().padStart(2, '0')}`;
-        }, 1000);
       });
       
       // ===== FAKE EMERGENCY BUTTON - TRIGGERS LAYER 3 =====
