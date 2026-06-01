@@ -286,9 +286,10 @@ const TD_SYMBOLS = { 'EUR/USD':'EUR/USD','GBP/USD':'GBP/USD','USD/JPY':'USD/JPY'
 let running = false;
 let soundOn = false;
 let fetchTimer = null;
-let countdown = 30;
+let countdown = 5;
 let cdInterval = null;
 let signals = [];
+let lastSignalKey = {};
 let priceHistory = {}; // pair -> array of candles [{open,high,low,close,time}]
 let lastPrices = {};
 let prevPrices = {};
@@ -349,7 +350,7 @@ function buildSimHistory(pair, length=60) {
 async function fetchTwelveData(pair, interval) {
   const key = document.getElementById('apiKey').value.trim();
   if (!key) return null;
-  const sym = pair.replace('/','');
+  const sym = pair;
   const url = `https://api.twelvedata.com/time_series?symbol=${sym}&interval=${interval}&outputsize=60&apikey=${key}&format=JSON`;
   try {
     const r = await fetch(url);
@@ -659,6 +660,10 @@ function renderIndicators(pair) {
 }
 
 function addSignalToLog(sig) {
+  const key = sig.pair + "_" + sig.signalType;
+  if (lastSignalKey[sig.pair] === key) return;
+  lastSignalKey[sig.pair] = key;
+
   const list = document.getElementById('signalList');
   const noSig = list.querySelector('.no-signals');
   if (noSig) noSig.remove();
@@ -760,7 +765,7 @@ function startFetching() {
   document.getElementById('statusText').textContent = 'Live';
 
   fetchAll();
-  fetchTimer = setInterval(fetchAll, 30000);
+  fetchTimer = setInterval(fetchAll, 5000);
 
   countdown = 30;
   cdInterval = setInterval(() => {
