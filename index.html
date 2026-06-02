@@ -214,7 +214,7 @@
 
 <div class="controls">
   <div class="ctrl-group" style="background:var(--green-dim);border:1px solid var(--green);border-radius:7px;padding:5px 12px;">
-    <span style="font-size:12px;color:var(--green);font-weight:700;">🟢 Live Rates via Currency-API — Real-Time Market Prices</span>
+    <span style="font-size:12px;color:var(--green);font-weight:700;">🟢 Live Rates — Source: <span id="apiSource">connecting...</span></span>
   </div>
   <div class="ctrl-group">
     <label>Pair</label>
@@ -302,48 +302,85 @@ const VOLATILITY = { 'EUR/USD':0.00025,'GBP/USD':0.00032,'USD/JPY':0.035,'AUD/US
 let livePrices = { 'EUR/USD':null,'GBP/USD':null,'USD/JPY':null,'AUD/USD':null };
 
 /* ══════════════════════════════════════════════════════
-   REAL-TIME PRICE FETCH — live interbank/market rates
-   Primary  : Fawazahmed0 currency API (live, free, no key)
-   Secondary: cdn.jsdelivr.net mirror of same API
-   These rates match broker prices like Quotex closely.
+   REAL PRICE FETCH — no API key required
+   Primary  : api.frankfurter.app  (ECB official rates)
+   Secondary: open.er-api.com      (free, no key needed)
 ══════════════════════════════════════════════════════ */
 async function fetchLiveRates() {
-  // Try primary: fawazahmed0 currency API (updates every ~60s, live market rates)
-  const endpoints = [
-    'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json',
-    'https://latest.currency-api.pages.dev/v1/currencies/usd.json',
+  let result = null;
+
+  // SOURCE A: EUR base from fawazahmed0 (live, updates frequently)
+  // EUR base: d.eur.usd = how many USD per 1 EUR = EUR/USD directly
+  // EUR base: d.eur.gbp = how many GBP per 1 EUR, so GBP/USD = usd/gbp
+  // EUR base: d.eur.jpy = how many JPY per 1 EUR, so USD/JPY = jpy/usd
+  // EUR base: d.eur.aud = how many AUD per 1 EUR, so AUD/USD = usd/aud
+  const eurUrls = [
+    'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json',
+    'https://latest.currency-api.pages.dev/v1/currencies/eur.json',
   ];
-  for (const url of endpoints) {
+  for (const url of eurUrls) {
     try {
-      const r = await fetch(url);
+      const r = await fetch(url + '?t=' + Date.now());
       const d = await r.json();
-      if (d && d.usd) {
-        const u = d.usd;
-        const result = {
-          'EUR/USD': u.eur ? parseFloat((u.eur).toFixed(5)) : null,
-          'GBP/USD': u.gbp ? parseFloat((u.gbp).toFixed(5)) : null,
-          'USD/JPY': u.jpy ? parseFloat((u.jpy).toFixed(3)) : null,
-          'AUD/USD': u.aud ? parseFloat((u.aud).toFixed(5)) : null,
+      if (d && d.eur && d.eur.usd) {
+        const e = d.eur;
+        const eurusd = parseFloat(e.usd.toFixed(5));
+        result = {
+          'EUR/USD': eurusd,
+          'GBP/USD': e.gbp ? parseFloat((eurusd / e.gbp).toFixed(5)) : null,
+          'USD/JPY': (e.jpy && eurusd) ? parseFloat((e.jpy / eurusd).toFixed(3)) : null,
+          'AUD/USD': e.aud ? parseFloat((eurusd / e.aud).toFixed(5)) : null,
         };
-        console.log('Live rates fetched:', result);
-        return result;
+        // Sanity check: EUR/USD should be between 1.0 and 1.5
+        if (result['EUR/USD'] > 1.0 && result['EUR/USD'] < 1.5) {
+          document.getElementById('apiSource').textContent = 'currency-api (EUR base)';
+          console.log('[A EUR-base] rates:', result);
+          return result;
+        }
       }
-    } catch(e) { console.warn('Endpoint failed:', url, e); }
+    } catch(e) { console.warn('EUR-base url failed', url, e); }
   }
 
-  // Final fallback: exchangerate.host (free, no key needed, real-time)
+  // SOURCE B: Frankfurter (ECB, USD base) — daily rate but reliable math
+  // USD base: d.rates.EUR = EUR per 1 USD (e.g. 0.859), so EUR/USD = 1/0.859
   try {
-    const r = await fetch('https://api.exchangerate.host/live?source=USD&currencies=EUR,GBP,JPY,AUD&access_key=free');
+    const r = await fetch('https://api.frankfurter.app/latest?from=USD&to=EUR,GBP,JPY,AUD');
     const d = await r.json();
-    if (d && d.quotes) {
-      return {
-        'EUR/USD': d.quotes.USDEUR ? parseFloat(d.quotes.USDEUR.toFixed(5)) : null,
-        'GBP/USD': d.quotes.USDGBP ? parseFloat(d.quotes.USDGBP.toFixed(5)) : null,
-        'USD/JPY': d.quotes.USDJPY ? parseFloat(d.quotes.USDJPY.toFixed(3)) : null,
-        'AUD/USD': d.quotes.USDAUD ? parseFloat(d.quotes.USDAUD.toFixed(5)) : null,
+    if (d && d.rates && d.rates.EUR) {
+      result = {
+        'EUR/USD': parseFloat((1/d.rates.EUR).toFixed(5)),
+        'GBP/USD': d.rates.GBP ? parseFloat((1/d.rates.GBP).toFixed(5)) : null,
+        'USD/JPY': d.rates.JPY ? parseFloat(d.rates.JPY.toFixed(3))     : null,
+        'AUD/USD': d.rates.AUD ? parseFloat((1/d.rates.AUD).toFixed(5)) : null,
       };
+      if (result['EUR/USD'] > 1.0) {
+        document.getElementById('apiSource').textContent = 'Frankfurter (ECB daily)';
+        console.log('[B Frankfurter] rates:', result);
+        return result;
+      }
     }
-  } catch(e) { console.warn('All rate sources failed', e); }
+  } catch(e) { console.warn('Frankfurter failed', e); }
+
+  // SOURCE C: open.er-api (USD base)
+  try {
+    const r = await fetch('https://open.er-api.com/v6/latest/USD');
+    const d = await r.json();
+    if (d && d.rates && d.rates.EUR) {
+      result = {
+        'EUR/USD': parseFloat((1/d.rates.EUR).toFixed(5)),
+        'GBP/USD': d.rates.GBP ? parseFloat((1/d.rates.GBP).toFixed(5)) : null,
+        'USD/JPY': d.rates.JPY ? parseFloat(d.rates.JPY.toFixed(3))     : null,
+        'AUD/USD': d.rates.AUD ? parseFloat((1/d.rates.AUD).toFixed(5)) : null,
+      };
+      if (result['EUR/USD'] > 1.0) {
+        document.getElementById('apiSource').textContent = 'open.er-api';
+        console.log('[C open.er-api] rates:', result);
+        return result;
+      }
+    }
+  } catch(e) { console.warn('open.er-api failed', e); }
+
+  document.getElementById('apiSource').textContent = 'ALL FAILED';
   return null;
 }
 
@@ -771,12 +808,12 @@ function startFetching() {
   document.getElementById('statusText').textContent = 'Live';
 
   fetchAll();
-  fetchTimer = setInterval(fetchAll, 10000);
+  fetchTimer = setInterval(fetchAll, 30000);
 
-  countdown = 10;
+  countdown = 30;
   cdInterval = setInterval(() => {
     countdown--;
-    if (countdown < 0) countdown = 10;
+    if (countdown < 0) countdown = 30;
     document.getElementById('cdTimer').textContent = countdown + 's';
   }, 1000);
 }
